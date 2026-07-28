@@ -1,16 +1,60 @@
-# React + Vite
+# AI Career Copilot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI Career Copilot is a full-stack AI-powered platform designed to help students and job seekers improve their career readiness through intelligent resume analysis, ATS scoring, and personalized career guidance.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- AI-powered Resume Analysis
+- ATS Compatibility Score
+- Personalized Resume Improvement Suggestions
+- Secure Resume Upload
+- Modern Responsive User Interface
+- Full-Stack Architecture
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
+- React.js
+- HTML5
+- CSS3
+- JavaScript
 
-## Expanding the ESLint configuration
+### Backend
+- Node.js
+- Express.js
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Tools
+- Git
+- GitHub
+- VS Code
+
+## Project Status
+
+🚧 Currently Under Development
+
+## Installation
+
+```bash
+git clone https://github.com/Rishisinghsawanth/AI-CAREER-COPILOT.git
+
+cd AI-CAREER-COPILOT
+
+npm install
+
+npm run dev
+```
+
+## Upcoming Features
+
+- AI Resume Evaluation
+- ATS Score Generation
+- Personalized Career Suggestions
+- Interview Question Generator
+- AI Career Assistant
+
+## Author
+
+**Rishi Singh Sawanth**
+
+- LinkedIn: https://www.linkedin.com/in/rishi-singh-sawanth-18b3662a0/
+- GitHub: https://github.com/Rishisinghsawanth
