@@ -123,49 +123,41 @@ function Dashboard() {
 
   async function submitAnswer() {
 
-
-    if(!answer.trim()) return;
-
-
-    setFeedbackLoading(true);
+  if(!answer.trim()) return;
 
 
-
-    try {
-
-
-      const response = await axios.post(
-
-        "http://localhost:5000/feedback",
-
-        {
-          answer: answer
-        }
-
-      );
+  setFeedbackLoading(true);
 
 
+  try {
 
-      setFeedback(
-        response.data.feedback
-      );
-
-
-
-    } catch(error) {
-
-
-      console.log(error);
+    const response = await axios.post(
+      "http://localhost:5000/feedback",
+      {
+        answer: answer
+      }
+    );
 
 
-    }
+    console.log(response.data);
 
 
+    setFeedback(
+      response.data.feedback
+    );
 
-    setFeedbackLoading(false);
 
+  } catch(error) {
+
+    console.log("Feedback Error:", error);
 
   }
+
+
+  setFeedbackLoading(false);
+
+}
+
 
 
 
@@ -244,64 +236,85 @@ function Dashboard() {
               </h3>
 
 
+<div className="breakdown-list">
 
-              <div className="breakdown-list">
-
-
-                <p>
-                  Skills
-                  <strong>
-                    {breakdown.skills}/40
-                  </strong>
-                </p>
-
-
-
-                <p>
-                  Projects
-                  <strong>
-                    {breakdown.projects}/20
-                  </strong>
-                </p>
+  <div className="breakdown-item">
+    <div className="breakdown-header">
+      <span>Skills</span>
+      <strong>{breakdown.skills}/40</strong>
+    </div>
+    <div className="progress-bar">
+      <div 
+        className="progress-fill"
+        style={{width:`${(breakdown.skills/40)*100}%`}}
+      ></div>
+    </div>
+  </div>
 
 
-
-                <p>
-                  Experience
-                  <strong>
-                    {breakdown.experience}/15
-                  </strong>
-                </p>
-
-
-
-                <p>
-                  Education
-                  <strong>
-                    {breakdown.education}/15
-                  </strong>
-                </p>
+  <div className="breakdown-item">
+    <div className="breakdown-header">
+      <span>Projects</span>
+      <strong>{breakdown.projects}/20</strong>
+    </div>
+    <div className="progress-bar">
+      <div 
+        className="progress-fill"
+        style={{width:`${(breakdown.projects/20)*100}%`}}
+      ></div>
+    </div>
+  </div>
 
 
+  <div className="breakdown-item">
+    <div className="breakdown-header">
+      <span>Experience</span>
+      <strong>{breakdown.experience}/15</strong>
+    </div>
+    <div className="progress-bar">
+      <div 
+        className="progress-fill"
+        style={{width:`${(breakdown.experience/15)*100}%`}}
+      ></div>
+    </div>
+  </div>
 
-                <p>
-                  Certificates
-                  <strong>
-                    {breakdown.certificates}/5
-                  </strong>
-                </p>
+
+  <div className="breakdown-item">
+    <div className="breakdown-header">
+      <span>Education</span>
+      <strong>{breakdown.education}/15</strong>
+    </div>
+    <div className="progress-bar">
+      <div 
+        className="progress-fill"
+        style={{width:`${(breakdown.education/15)*100}%`}}
+      ></div>
+    </div>
+  </div>
 
 
+  <div className="breakdown-item">
+    <div className="breakdown-header">
+      <span>Certificates</span>
+      <strong>{breakdown.certificates}/5</strong>
+    </div>
+    <div className="progress-bar">
+      <div 
+        className="progress-fill"
+        style={{width:`${(breakdown.certificates/5)*100}%`}}
+      ></div>
+    </div>
+  </div>
 
-              </div>
+
+</div>
 
 
             </div>
 
           )
         }
-
-
 
 
 
