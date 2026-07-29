@@ -97,18 +97,13 @@ function matchJobs(skillsFound) {
 
 
       matchedJobs.push({
+  title: job.title,
+  matchScore: percentage,   // instead of match
+  matchedSkills: matchedSkills,
+  requiredSkills: job.requiredSkills,
+  reason: `You match ${matchedSkills.length}/${job.requiredSkills.length} required skills`
+});
 
-        title: job.title,
-
-        match: percentage,
-
-        skills: matchedSkills,
-
-        reason:
-        `You match ${matchedSkills.length}/${job.requiredSkills.length} required skills`
-
-
-      });
 
 
     }

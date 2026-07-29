@@ -6,7 +6,9 @@ const matchJobs = require("./jobMatcher");
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
-const { PDFParse } = require("pdf-parse");
+const pdfParse = require("pdf-parse");
+
+
 
 
 const app = express();
@@ -77,15 +79,8 @@ app.post("/upload", upload.single("resume"), async (req, res) => {
 
 
 
-    const parser = new PDFParse({
+    const pdfData = await pdfParse(dataBuffer);
 
-      data: dataBuffer
-
-    });
-
-
-
-    const pdfData = await parser.getText();
 
 
 
