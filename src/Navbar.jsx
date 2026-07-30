@@ -1,19 +1,22 @@
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="logo">
-        <span>🚀</span>
-        <h2>PlacementPilot AI</h2>
-      </div>
+      <a href="#hero" className="logo">
+  <span className="logo-mark">🚀</span>
+  <h2>PlacementPilot <span>AI</span></h2>
+</a>
 
       <ul>
-        <li>Features</li>
-        <li>Resume AI</li>
-        <li>Mock Interview</li>
-        <li>Pricing</li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#resume-analyzer">Resume AI</a></li>
+        <li><a href="#mock-interview">Mock Interview</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
       </ul>
 
-      <button className="nav-btn">Get Started</button>
+      <a href="#login" className="nav-btn">
+        Get Started
+        <span>→</span>
+      </a>
     </nav>
   );
 }

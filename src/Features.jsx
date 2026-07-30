@@ -1,33 +1,78 @@
 function Features() {
   return (
-    <section className="features">
+    <section className="features" id="features">
+      <div className="section-header">
+        <span className="section-kicker">THE PLATFORM</span>
 
-      <h2>Why Choose AI Career Copilot?</h2>
+        <h2>
+          Everything you need to
+          <span> get placement ready.</span>
+        </h2>
 
-      <div className="cards">
-
-        <div className="card">
-          <h3>📄 Resume Analyzer</h3>
-          <p>Get ATS score and AI suggestions.</p>
-        </div>
-
-        <div className="card">
-          <h3>🤖 AI Interview</h3>
-          <p>Practice HR and Technical interviews.</p>
-        </div>
-
-        <div className="card">
-          <h3>💻 DSA Tracker</h3>
-          <p>Track coding progress every day.</p>
-        </div>
-
-        <div className="card">
-          <h3>📊 Dashboard</h3>
-          <p>Monitor placement preparation.</p>
-        </div>
-
+        <p>
+          A focused career workspace designed around the things that actually
+          matter during placement preparation.
+        </p>
       </div>
 
+      <div className="feature-grid">
+        <article className="feature-card feature-large">
+          <div className="feature-number">01</div>
+
+          <div className="feature-icon">◌</div>
+
+          <h3>Resume Intelligence</h3>
+
+          <p>
+            Analyze your resume with ATS-focused scoring, skill detection,
+            missing-skill identification and personalized recommendations.
+          </p>
+
+          <div className="feature-metric">
+            <strong>ATS</strong>
+            <span>Resume analysis engine</span>
+          </div>
+        </article>
+
+        <article className="feature-card">
+          <div className="feature-number">02</div>
+
+          <div className="feature-icon">◈</div>
+
+          <h3>AI Mock Interview</h3>
+
+          <p>
+            Practice technical and HR questions and receive structured AI
+            feedback on your answers.
+          </p>
+        </article>
+
+        <article className="feature-card">
+          <div className="feature-number">03</div>
+
+          <div className="feature-icon">⌁</div>
+
+          <h3>Job Matching</h3>
+
+          <p>
+            Discover opportunities matched against the skills found in your
+            resume.
+          </p>
+        </article>
+
+        <article className="feature-card">
+          <div className="feature-number">04</div>
+
+          <div className="feature-icon">+</div>
+
+          <h3>Career Dashboard</h3>
+
+          <p>
+            Keep your preparation signals, recommendations and progress in one
+            focused workspace.
+          </p>
+        </article>
+      </div>
     </section>
   );
 }
