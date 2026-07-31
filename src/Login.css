@@ -1716,3 +1716,758 @@
 .login-heading .eyebrow {
   transform: translateY(-20px) !important;
 }
+/* =========================================================
+   PLANET — BLUE / VIOLET / PURPLE FUTURISTIC MOON
+   ========================================================= */
+
+.planet-surface {
+  position: absolute;
+
+  width: 1100px;
+  height: 520px;
+
+  left: -390px;
+  bottom: -395px;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  z-index: 1;
+  pointer-events: none;
+
+  /* MAIN PLANET COLOR */
+  background:
+    /* bright blue atmospheric side */
+    radial-gradient(
+      ellipse at 68% 28%,
+      rgba(89, 177, 255, 0.95) 0%,
+      rgba(72, 121, 235, 0.82) 14%,
+      transparent 38%
+    ),
+
+    /* violet center */
+    radial-gradient(
+      ellipse at 48% 35%,
+      rgba(122, 82, 255, 0.95) 0%,
+      rgba(91, 67, 220, 0.82) 30%,
+      transparent 62%
+    ),
+
+    /* deep purple lower region */
+    radial-gradient(
+      ellipse at 45% 75%,
+      rgba(66, 43, 145, 0.95) 0%,
+      rgba(32, 24, 82, 0.95) 48%,
+      transparent 78%
+    ),
+
+    /* base */
+    #17143f;
+
+  box-shadow:
+    0 -3px 8px rgba(126, 188, 255, 0.95),
+    0 -10px 28px rgba(111, 105, 255, 0.72),
+    0 -25px 60px rgba(119, 67, 255, 0.55),
+    0 -45px 110px rgba(80, 65, 255, 0.28);
+}
+
+
+/* =========================================================
+   MOON-LIKE SURFACE
+   ========================================================= */
+
+.planet-grid {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  background:
+
+    /* LARGE CRATERS */
+
+    radial-gradient(
+      ellipse 95px 42px at 31% 48%,
+      rgba(23, 22, 70, 0.72) 0%,
+      rgba(57, 49, 125, 0.48) 38%,
+      rgba(105, 83, 205, 0.18) 58%,
+      transparent 75%
+    ),
+
+    radial-gradient(
+      ellipse 75px 32px at 55% 55%,
+      rgba(26, 22, 75, 0.68) 0%,
+      rgba(63, 53, 135, 0.45) 40%,
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 115px 45px at 70% 43%,
+      rgba(35, 28, 88, 0.55) 0%,
+      rgba(82, 67, 160, 0.35) 42%,
+      transparent 74%
+    ),
+
+    radial-gradient(
+      ellipse 65px 28px at 43% 72%,
+      rgba(25, 22, 67, 0.65) 0%,
+      rgba(70, 56, 140, 0.30) 45%,
+      transparent 75%
+    ),
+
+    radial-gradient(
+      ellipse 48px 22px at 78% 67%,
+      rgba(30, 24, 75, 0.60) 0%,
+      rgba(77, 60, 150, 0.25) 45%,
+      transparent 75%
+    ),
+
+    /* SMALL CRATERS */
+
+    radial-gradient(
+      circle 18px at 24% 57%,
+      rgba(28, 24, 72, 0.65) 0%,
+      rgba(95, 77, 175, 0.28) 55%,
+      transparent 75%
+    ),
+
+    radial-gradient(
+      circle 13px at 49% 44%,
+      rgba(28, 23, 70, 0.6) 0%,
+      rgba(100, 82, 190, 0.25) 55%,
+      transparent 75%
+    ),
+
+    radial-gradient(
+      circle 21px at 62% 65%,
+      rgba(25, 22, 65, 0.55) 0%,
+      rgba(90, 70, 170, 0.22) 55%,
+      transparent 75%
+    ),
+
+    radial-gradient(
+      circle 11px at 82% 52%,
+      rgba(25, 20, 65, 0.6) 0%,
+      rgba(95, 75, 175, 0.22) 55%,
+      transparent 75%
+    ),
+
+    /* surface patches */
+
+    radial-gradient(
+      ellipse 180px 65px at 38% 38%,
+      rgba(145, 110, 255, 0.14),
+      transparent 70%
+    ),
+
+    radial-gradient(
+      ellipse 200px 75px at 66% 48%,
+      rgba(76, 150, 255, 0.14),
+      transparent 70%
+    );
+
+  opacity: 0.85;
+
+  filter: blur(1.5px);
+
+  transform: scale(1.04);
+
+  mix-blend-mode: screen;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   DEEP CRATER SHADOWS
+   ========================================================= */
+
+.planet-lights {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  background:
+
+    /* crater shadows */
+
+    radial-gradient(
+      ellipse 60px 25px at 31% 48%,
+      rgba(8, 9, 38, 0.48),
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 48px 20px at 55% 55%,
+      rgba(8, 8, 35, 0.42),
+      transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse 72px 28px at 70% 43%,
+      rgba(9, 9, 38, 0.38),
+      transparent 72%
+    ),
+
+    /* blue reflected light */
+
+    radial-gradient(
+      ellipse at 72% 28%,
+      rgba(82, 191, 255, 0.24),
+      transparent 32%
+    ),
+
+    /* violet reflected light */
+
+    radial-gradient(
+      ellipse at 42% 38%,
+      rgba(171, 112, 255, 0.18),
+      transparent 38%
+    );
+
+  filter: blur(2px);
+
+  opacity: 0.9;
+
+  mix-blend-mode: screen;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SOFT CLOUD / ATMOSPHERIC TEXTURE
+   ========================================================= */
+
+.planet-clouds {
+
+  position: absolute;
+
+  width: 120%;
+  height: 55%;
+
+  left: -10%;
+  top: 3%;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(
+      ellipse at 28% 45%,
+      rgba(177, 145, 255, 0.13),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      ellipse at 58% 35%,
+      rgba(95, 180, 255, 0.16),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      ellipse at 78% 55%,
+      rgba(125, 100, 255, 0.12),
+      transparent 28%
+    );
+
+  filter: blur(18px);
+
+  opacity: 0.7;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   THIN BLUE / VIOLET ATMOSPHERIC RIM
+   ========================================================= */
+
+.planet-surface::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: -2%;
+  top: -3%;
+
+  width: 104%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  border-top: 2px solid rgba(126, 199, 255, 0.9);
+
+  box-shadow:
+
+    0 -2px 5px rgba(104, 196, 255, 0.95),
+
+    0 -8px 18px rgba(110, 155, 255, 0.8),
+
+    0 -17px 38px rgba(126, 96, 255, 0.65),
+
+    0 -32px 75px rgba(112, 65, 255, 0.38);
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SOFT PLANET ATMOSPHERE
+   ========================================================= */
+
+.planet-surface::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 90%;
+  height: 58%;
+
+  left: 5%;
+  top: -4%;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(
+      ellipse at center,
+      rgba(98, 176, 255, 0.18) 0%,
+      rgba(117, 105, 255, 0.14) 30%,
+      rgba(126, 72, 255, 0.08) 52%,
+      transparent 75%
+    );
+
+  filter: blur(18px);
+
+  z-index: 9;
+
+  pointer-events: none;
+}
+/* =========================================================
+   PREMIUM RIGHT SIDE — CAREER COMMAND CENTER
+========================================================= */
+
+.login-side {
+  position: relative;
+}
+
+.career-visual {
+  position: absolute;
+  left: 530px;
+  right: -20px;
+  top: 0;
+  bottom: 0;
+
+  min-width: 520px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+
+/* ---------- ambient glow ---------- */
+
+.career-visual-glow {
+  position: absolute;
+
+  width: 430px;
+  height: 430px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(73, 205, 255, .18),
+      rgba(116, 78, 255, .10) 45%,
+      transparent 70%
+    );
+
+  filter: blur(25px);
+}
+
+
+/* ---------- orbital rings ---------- */
+
+.career-orbit {
+  position: absolute;
+
+  width: 390px;
+  height: 150px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(84, 210, 255, .28);
+
+  box-shadow:
+    0 0 25px rgba(77, 179, 255, .08);
+}
+
+.orbit-a {
+  transform: rotate(-27deg);
+}
+
+.orbit-b {
+  transform: rotate(52deg);
+
+  border-color:
+    rgba(157, 100, 255, .30);
+}
+
+
+/* ---------- central AI sphere ---------- */
+
+.career-core {
+  position: absolute;
+
+  width: 155px;
+  height: 155px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #dffbff 0%,
+      #69e5ff 13%,
+      #637eff 40%,
+      #8149ff 68%,
+      #24135e 100%
+    );
+
+  box-shadow:
+    0 0 30px rgba(68, 210, 255, .45),
+    0 0 75px rgba(111, 71, 255, .30),
+    inset -20px -25px 35px rgba(28, 12, 85, .45);
+
+  z-index: 3;
+
+  animation: careerCoreFloat 5s ease-in-out infinite;
+}
+
+.career-core-ring {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.career-core-ring span {
+  font-size: 34px;
+  color: white;
+
+  text-shadow:
+    0 0 10px white,
+    0 0 28px #55ddff;
+}
+
+
+/* ---------- floating glass cards ---------- */
+
+.career-card {
+  position: absolute;
+
+  z-index: 8;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 13px 16px;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(18, 25, 52, .86),
+      rgba(8, 13, 31, .72)
+    );
+
+  border: 1px solid rgba(142, 158, 215, .20);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, .32),
+    inset 0 1px rgba(255, 255, 255, .06);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  animation: careerCardFloat 5s ease-in-out infinite;
+}
+
+.career-card b {
+  display: block;
+
+  color: #f5f7ff;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.career-card small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #8794b4;
+
+  font-size: 9px;
+}
+
+
+/* ---------- top card ---------- */
+
+.career-card-top {
+  top: 22%;
+  right: 4%;
+}
+
+.career-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #62e4ff;
+
+  box-shadow:
+    0 0 12px #62e4ff;
+}
+
+
+/* ---------- resume card ---------- */
+
+.career-card-left {
+  top: 34%;
+  left: 2%;
+}
+
+.career-card-left b {
+  margin-top: 1px;
+
+  font-size: 23px;
+}
+
+.career-card-left b span {
+  color: #687692;
+  font-size: 11px;
+}
+
+
+/* ---------- interview card ---------- */
+
+.career-card-right {
+  right: 0;
+  top: 47%;
+
+  animation-delay: -2s;
+}
+
+.career-card-right b {
+  font-size: 20px;
+}
+
+.career-card-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  color: #58dcff;
+
+  background: rgba(72, 210, 255, .10);
+
+  border: 1px solid rgba(72, 210, 255, .18);
+}
+
+.career-card-icon.purple {
+  color: #a17cff;
+
+  background: rgba(140, 95, 255, .11);
+
+  border-color:
+    rgba(140, 95, 255, .20);
+}
+
+
+/* ---------- bottom progress ---------- */
+
+.career-card-bottom {
+  bottom: 25%;
+  left: 7%;
+
+  animation-delay: -3s;
+}
+
+.career-progress {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      #65dcff 0 78%,
+      rgba(255,255,255,.08) 78% 100%
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.career-progress span {
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  background: #10172e;
+}
+
+
+/* ---------- bottom text ---------- */
+
+.career-copy {
+  position: absolute;
+
+  left: 50%;
+  bottom: 7%;
+
+  width: 420px;
+
+  transform: translateX(-50%);
+
+  text-align: center;
+
+  z-index: 5;
+}
+
+.career-copy > span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #5edcff;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+}
+
+.career-copy h2 {
+  margin: 0;
+
+  color: #f4f7ff;
+
+  font-size: 29px;
+  line-height: 1.08;
+
+  letter-spacing: -1px;
+}
+
+.career-copy h2 strong {
+  display: block;
+
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      90deg,
+      #54ddff,
+      #7180ff,
+      #a15bff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.career-copy p {
+  width: 340px;
+
+  margin: 12px auto 0;
+
+  color: #7f8ca9;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+
+/* ---------- animation ---------- */
+
+@keyframes careerCoreFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes careerCardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1250px) {
+  .career-visual {
+    left: 480px;
+    min-width: 460px;
+
+    transform: scale(.9);
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 1050px) {
+  .career-visual {
+    display: none;
+  }
+}

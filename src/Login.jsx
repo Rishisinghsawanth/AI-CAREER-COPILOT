@@ -26,6 +26,12 @@ function Login() {
   return (
     <main className="login-page">
 
+      {/* FUTURISTIC PLANET */}
+      <div className="planet-surface" aria-hidden="true">
+        <div className="planet-grid" />
+        <div className="planet-lights" />
+      </div>
+
       {/* STARFIELD */}
       <div className="login-stars" aria-hidden="true">
         {Array.from({ length: 20 }).map((_, index) => (
@@ -109,11 +115,73 @@ function Login() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="login-side">
+       {/* RIGHT SIDE */}
+<div className="login-side">
+  <div className="career-visual">
 
-          {/* EXISTING LOGIN CARD */}
-          <div className="login-card">
+  <div className="career-visual-glow"></div>
 
+  <div className="career-orbit orbit-a"></div>
+  <div className="career-orbit orbit-b"></div>
+
+  <div className="career-core">
+    <div className="career-core-ring">
+      <span>✦</span>
+    </div>
+  </div>
+
+  <div className="career-card career-card-top">
+    <span className="career-dot"></span>
+    <div>
+      <b>AI Career Analysis</b>
+      <small>Profile optimized</small>
+    </div>
+  </div>
+
+  <div className="career-card career-card-left">
+    <div className="career-card-icon">↗</div>
+    <div>
+      <small>RESUME SCORE</small>
+      <b>87<span>/100</span></b>
+    </div>
+  </div>
+
+  <div className="career-card career-card-right">
+    <div className="career-card-icon purple">◆</div>
+    <div>
+      <small>INTERVIEW READINESS</small>
+      <b>92%</b>
+    </div>
+  </div>
+
+  <div className="career-card career-card-bottom">
+    <div className="career-progress">
+      <span></span>
+    </div>
+    <div>
+      <b>Career Progress</b>
+      <small>You're on the right trajectory</small>
+    </div>
+  </div>
+
+  <div className="career-copy">
+    <span>AI-POWERED CAREER INTELLIGENCE</span>
+
+    <h2>
+      Your next
+      <strong> opportunity starts here.</strong>
+    </h2>
+
+    <p>
+      Analyze. Prepare. Practice. Get placement ready
+      with one intelligent career platform.
+    </p>
+  </div>
+
+</div>
+
+  {/* EXISTING LOGIN CARD */}
+  <div className="login-card">
             {/* LOGIN HEADING */}
             <div className="login-heading">
 
@@ -270,6 +338,7 @@ function Login() {
             </p>
 
           </div>
+          
 
         </div>
 
