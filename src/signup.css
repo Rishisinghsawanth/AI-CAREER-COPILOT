@@ -1,0 +1,1927 @@
+/* =========================================================
+   PLACEMENTPILOT — SIGNUP
+   DEEP SPACE / GALAXY / ROCKET SYSTEM
+========================================================= */
+
+.signup-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  background:
+    radial-gradient(
+      ellipse at 15% 55%,
+      rgba(26, 132, 255, 0.09),
+      transparent 34%
+    ),
+    radial-gradient(
+      ellipse at 82% 28%,
+      rgba(111, 76, 255, 0.12),
+      transparent 34%
+    ),
+    radial-gradient(
+      ellipse at 50% 105%,
+      rgba(28, 88, 255, 0.08),
+      transparent 42%
+    ),
+    #04060d;
+
+  color: #fff;
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   SPACE GRID
+========================================================= */
+
+.signup-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(118, 151, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(118, 151, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 74px 74px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 18%,
+      black 82%,
+      transparent
+    );
+
+  pointer-events: none;
+  z-index: -5;
+}
+
+
+/* =========================================================
+   NEBULA
+========================================================= */
+
+.signup-nebula {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: -4;
+}
+
+.nebula-one {
+  width: 520px;
+  height: 520px;
+
+  left: -280px;
+  top: 30%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(32, 179, 255, 0.13),
+      transparent 68%
+    );
+}
+
+.nebula-two {
+  width: 620px;
+  height: 620px;
+
+  right: -320px;
+  top: -160px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(116, 71, 255, 0.16),
+      transparent 68%
+    );
+}
+
+.nebula-three {
+  width: 420px;
+  height: 420px;
+
+  right: 25%;
+  bottom: -300px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(44, 154, 255, 0.08),
+      transparent 68%
+    );
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.signup-stars {
+  position: absolute;
+  inset: 0;
+
+  z-index: -2;
+
+  pointer-events: none;
+}
+
+.signup-star {
+  position: absolute;
+
+  width: 2px;
+  height: 2px;
+
+  border-radius: 50%;
+
+  background: rgba(224, 240, 255, 0.9);
+
+  box-shadow:
+    0 0 5px rgba(145, 204, 255, 0.9),
+    0 0 12px rgba(91, 145, 255, 0.45);
+
+  animation:
+    starTwinkle 4s ease-in-out infinite;
+}
+
+.signup-star:nth-child(3n) {
+  width: 1px;
+  height: 1px;
+}
+
+.signup-star:nth-child(5n) {
+  width: 3px;
+  height: 3px;
+}
+
+.signup-star:nth-child(4n) {
+  animation-delay: -1.5s;
+}
+
+.signup-star:nth-child(7n) {
+  animation-delay: -3s;
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(0.7);
+  }
+
+  50% {
+    opacity: 0.95;
+    transform: scale(1.25);
+  }
+}
+
+
+/* =========================================================
+   STAR POSITIONS
+========================================================= */
+
+.star-1  { left: 4%; top: 12%; }
+.star-2  { left: 8%; top: 43%; }
+.star-3  { left: 12%; top: 76%; }
+.star-4  { left: 17%; top: 22%; }
+.star-5  { left: 21%; top: 88%; }
+.star-6  { left: 25%; top: 48%; }
+.star-7  { left: 29%; top: 10%; }
+.star-8  { left: 33%; top: 69%; }
+.star-9  { left: 38%; top: 31%; }
+.star-10 { left: 42%; top: 91%; }
+
+.star-11 { left: 47%; top: 15%; }
+.star-12 { left: 51%; top: 55%; }
+.star-13 { left: 56%; top: 7%; }
+.star-14 { left: 60%; top: 82%; }
+.star-15 { left: 64%; top: 25%; }
+.star-16 { left: 69%; top: 63%; }
+.star-17 { left: 73%; top: 12%; }
+.star-18 { left: 77%; top: 91%; }
+.star-19 { left: 82%; top: 37%; }
+.star-20 { left: 87%; top: 72%; }
+
+.star-21 { left: 92%; top: 17%; }
+.star-22 { left: 96%; top: 52%; }
+.star-23 { left: 3%; top: 94%; }
+.star-24 { left: 14%; top: 57%; }
+.star-25 { left: 31%; top: 39%; }
+.star-26 { left: 45%; top: 72%; }
+.star-27 { left: 58%; top: 46%; }
+.star-28 { left: 71%; top: 76%; }
+.star-29 { left: 84%; top: 15%; }
+.star-30 { left: 94%; top: 86%; }
+
+.star-31 { left: 6%; top: 28%; }
+.star-32 { left: 10%; top: 64%; }
+.star-33 { left: 19%; top: 39%; }
+.star-34 { left: 27%; top: 82%; }
+.star-35 { left: 35%; top: 17%; }
+.star-36 { left: 43%; top: 42%; }
+.star-37 { left: 53%; top: 91%; }
+.star-38 { left: 62%; top: 12%; }
+.star-39 { left: 68%; top: 49%; }
+.star-40 { left: 79%; top: 27%; }
+
+.star-41 { left: 90%; top: 61%; }
+.star-42 { left: 97%; top: 34%; }
+.star-43 { left: 23%; top: 5%; }
+.star-44 { left: 40%; top: 61%; }
+.star-45 { left: 55%; top: 30%; }
+.star-46 { left: 66%; top: 88%; }
+.star-47 { left: 74%; top: 56%; }
+.star-48 { left: 88%; top: 44%; }
+.star-49 { left: 15%; top: 91%; }
+.star-50 { left: 48%; top: 5%; }
+
+.star-51 { left: 2%; top: 58%; }
+.star-52 { left: 18%; top: 13%; }
+.star-53 { left: 36%; top: 86%; }
+.star-54 { left: 50%; top: 78%; }
+.star-55 { left: 63%; top: 68%; }
+.star-56 { left: 81%; top: 83%; }
+.star-57 { left: 91%; top: 8%; }
+.star-58 { left: 11%; top: 4%; }
+.star-59 { left: 70%; top: 4%; }
+.star-60 { left: 98%; top: 76%; }
+
+.star-61 { left: 5%; top: 81%; }
+.star-62 { left: 30%; top: 55%; }
+.star-63 { left: 46%; top: 24%; }
+.star-64 { left: 57%; top: 58%; }
+.star-65 { left: 76%; top: 39%; }
+
+
+/* =========================================================
+   DISTANT GALAXY
+========================================================= */
+
+.signup-galaxy {
+  position: absolute;
+
+  right: 5%;
+  top: 8%;
+
+  width: 230px;
+  height: 230px;
+
+  opacity: 0.42;
+
+  pointer-events: none;
+  z-index: -3;
+
+  transform: rotate(-18deg);
+}
+
+.galaxy-core {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 34px;
+  height: 34px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: #e7f7ff;
+
+  box-shadow:
+    0 0 14px #ffffff,
+    0 0 35px #8cd9ff,
+    0 0 70px rgba(120, 95, 255, 0.9);
+}
+
+.galaxy-arm {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 215px;
+  height: 82px;
+
+  transform: translate(-50%, -50%) rotate(22deg);
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(105, 198, 255, 0.3);
+
+  box-shadow:
+    0 0 25px rgba(72, 163, 255, 0.12);
+}
+
+.galaxy-arm-two {
+  transform: translate(-50%, -50%) rotate(-35deg);
+
+  border-color: rgba(149, 101, 255, 0.25);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.signup-brand {
+  position: relative;
+  z-index: 10;
+
+  width: min(1320px, calc(100% - 64px));
+
+  margin: 0 auto;
+  padding-top: 28px;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(110, 188, 255, 0.32);
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(74, 158, 255, 0.22),
+      rgba(105, 72, 255, 0.15)
+    );
+
+  box-shadow:
+    0 0 20px rgba(72, 143, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.brand-mark span {
+  color: #dff9ff;
+
+  font-size: 15px;
+
+  text-shadow:
+    0 0 8px #65d7ff,
+    0 0 18px rgba(105, 93, 255, 0.8);
+}
+
+.brand-copy strong {
+  display: block;
+
+  font-size: 12px;
+  letter-spacing: 2.2px;
+  font-weight: 700;
+}
+
+.brand-copy span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: rgba(166, 185, 221, 0.42);
+
+  font-size: 7px;
+  letter-spacing: 2.3px;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.signup-container {
+  position: relative;
+  z-index: 5;
+
+  width: min(1320px, calc(100% - 64px));
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    510px;
+
+  gap: 78px;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   LEFT VISUAL
+========================================================= */
+
+.signup-visual {
+  position: relative;
+
+  min-height: 680px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.visual-kicker {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 19px;
+
+  color: #79dfff;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 2.7px;
+}
+
+.kicker-line {
+  width: 27px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #60ddff,
+      #7a6dff
+    );
+
+  box-shadow:
+    0 0 9px rgba(85, 206, 255, 0.7);
+}
+
+.kicker-status {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #5eeaff;
+
+  box-shadow:
+    0 0 7px #5eeaff;
+
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+}
+
+.signup-visual h1 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  max-width: 690px;
+
+  font-size: clamp(48px, 5.1vw, 76px);
+
+  line-height: 0.98;
+
+  letter-spacing: -4px;
+
+  font-weight: 600;
+}
+
+.signup-visual h1 span {
+  display: inline-block;
+
+  background:
+    linear-gradient(
+      100deg,
+      #ffffff 5%,
+      #c9f7ff 25%,
+      #68dfff 48%,
+      #8b79ff 78%,
+      #b795ff 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.visual-description {
+  position: relative;
+  z-index: 2;
+
+  max-width: 520px;
+
+  margin: 25px 0 0;
+
+  color: rgba(173, 190, 224, 0.61);
+
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+
+/* =========================================================
+   ROCKET TRAJECTORY
+========================================================= */
+
+.rocket-trajectory {
+  position: absolute;
+
+  width: 280px;
+  height: 230px;
+
+  right: 50px;
+  top: 80px;
+
+  pointer-events: none;
+
+  opacity: 0.9;
+}
+
+.trajectory-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border: 1px solid rgba(91, 177, 255, 0.13);
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%) rotate(-22deg);
+}
+
+.ring-one {
+  width: 260px;
+  height: 90px;
+}
+
+.ring-two {
+  width: 190px;
+  height: 65px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(28deg);
+
+  border-color: rgba(133, 100, 255, 0.12);
+}
+
+.trajectory-line {
+  position: absolute;
+
+  width: 220px;
+  height: 1px;
+
+  left: 30px;
+  top: 110px;
+
+  transform: rotate(-31deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(81, 212, 255, 0.35),
+      rgba(132, 105, 255, 0.28),
+      transparent
+    );
+
+  box-shadow:
+    0 0 10px rgba(70, 177, 255, 0.25);
+}
+
+.mini-rocket {
+  position: absolute;
+
+  right: 22px;
+  top: 27px;
+
+  width: 38px;
+  height: 65px;
+
+  transform: rotate(35deg);
+
+  filter:
+    drop-shadow(0 0 8px rgba(89, 206, 255, 0.7));
+}
+
+.mini-rocket-body {
+  position: absolute;
+
+  width: 18px;
+  height: 35px;
+
+  left: 10px;
+  top: 0;
+
+  border-radius:
+    50% 50% 42% 42%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #c8f7ff,
+      #ffffff 45%,
+      #9a9cff
+    );
+}
+
+.mini-rocket-body::before {
+  content: "";
+
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  left: 5px;
+  top: 10px;
+
+  border-radius: 50%;
+
+  background: #314dff;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  box-shadow:
+    0 0 7px #56d8ff;
+}
+
+.mini-rocket-body::after {
+  content: "";
+
+  position: absolute;
+
+  width: 10px;
+  height: 9px;
+
+  bottom: -3px;
+  left: 4px;
+
+  background: #787dff;
+
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+}
+
+.mini-rocket-flame {
+  position: absolute;
+
+  left: 14px;
+  top: 33px;
+}
+
+.mini-rocket-flame i {
+  position: absolute;
+
+  display: block;
+
+  width: 5px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ffffff,
+      #58dfff,
+      #7268ff,
+      transparent
+    );
+
+  filter: blur(1px);
+
+  animation: miniFlame 0.32s ease-in-out infinite alternate;
+}
+
+.mini-rocket-flame i:nth-child(2) {
+  left: 5px;
+  animation-delay: -0.15s;
+}
+
+@keyframes miniFlame {
+  to {
+    height: 24px;
+    opacity: 0.55;
+  }
+}
+
+
+/* =========================================================
+   ORBIT SYSTEM
+========================================================= */
+
+.career-orbit-system {
+  position: absolute;
+
+  width: 430px;
+  height: 430px;
+
+  right: -5px;
+  bottom: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border: 1px solid rgba(111, 153, 255, 0.14);
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+
+  box-shadow:
+    0 0 20px rgba(82, 111, 255, 0.035);
+
+  animation: orbitDrift 18s linear infinite;
+}
+
+.orbit-large {
+  width: 410px;
+  height: 148px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-17deg);
+}
+
+.orbit-medium {
+  width: 320px;
+  height: 118px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(18deg);
+
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+
+.orbit-small {
+  width: 235px;
+  height: 86px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-33deg);
+
+  animation-duration: 11s;
+}
+
+@keyframes orbitDrift {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+
+/* =========================================================
+   PLANET
+========================================================= */
+
+.career-planet {
+  position: relative;
+
+  width: 118px;
+  height: 118px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 24%,
+      rgba(235, 255, 255, 0.92),
+      transparent 9%
+    ),
+    radial-gradient(
+      circle at 34% 32%,
+      rgba(73, 223, 255, 0.62),
+      transparent 29%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(119, 72, 255, 0.72),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #367cff,
+      #655fff 56%,
+      #352091
+    );
+
+  border: 1px solid rgba(181, 229, 255, 0.48);
+
+  box-shadow:
+    0 0 26px rgba(57, 193, 255, 0.38),
+    0 0 70px rgba(86, 79, 255, 0.25),
+    inset 9px 9px 25px rgba(255, 255, 255, 0.15),
+    inset -17px -18px 27px rgba(30, 18, 106, 0.4);
+
+  animation: planetFloat 5s ease-in-out infinite;
+
+  z-index: 5;
+}
+
+.planet-atmosphere {
+  position: absolute;
+  inset: -9px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(79, 211, 255, 0.16);
+
+  box-shadow:
+    0 0 28px rgba(63, 186, 255, 0.1);
+}
+
+.planet-light {
+  position: absolute;
+
+  width: 28px;
+  height: 28px;
+
+  left: 18px;
+  top: 14px;
+
+  border-radius: 50%;
+
+  background: rgba(224, 255, 255, 0.75);
+
+  filter: blur(9px);
+}
+
+.planet-surface {
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  background:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 13px,
+      rgba(255, 255, 255, 0.045) 14px 16px
+    );
+
+  opacity: 0.7;
+}
+
+.career-planet span {
+  position: absolute;
+
+  right: 27px;
+  bottom: 25px;
+
+  color: #fff;
+
+  font-size: 17px;
+
+  text-shadow:
+    0 0 10px #fff,
+    0 0 25px #59d7ff;
+}
+
+@keyframes planetFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-11px);
+  }
+}
+
+
+/* =========================================================
+   ORBIT NODES
+========================================================= */
+
+.orbit-node {
+  position: absolute;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(138, 169, 255, 0.26);
+
+  border-radius: 50%;
+
+  background:
+    rgba(5, 9, 23, 0.8);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 0 20px rgba(80, 108, 255, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  color: #b9d8ff;
+
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.node-one {
+  top: 18px;
+  right: 66px;
+}
+
+.node-two {
+  left: 28px;
+  bottom: 40px;
+}
+
+.node-three {
+  left: 36px;
+  top: 80px;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.signup-features {
+  position: absolute;
+
+  left: 0;
+  bottom: 28px;
+
+  display: flex;
+  gap: 30px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.feature-number {
+  color: #718fff;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.feature-item strong {
+  display: block;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.feature-item div span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: rgba(153, 171, 208, 0.43);
+
+  font-size: 8px;
+}
+
+
+/* =========================================================
+   SIGNUP PANEL
+========================================================= */
+
+.signup-panel {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+}
+
+.signup-card {
+  position: relative;
+
+  width: 100%;
+
+  padding: 34px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(147, 171, 225, 0.14);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(22, 28, 55, 0.92),
+      rgba(7, 10, 23, 0.96)
+    );
+
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.48),
+    0 0 80px rgba(73, 82, 255, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(28px);
+}
+
+.signup-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  right: -180px;
+  top: -190px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(65, 218, 255, 0.12),
+      transparent 67%
+    );
+
+  filter: blur(8px);
+
+  pointer-events: none;
+}
+
+.signup-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 180px;
+
+  left: 20%;
+  bottom: -150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(119, 76, 255, 0.13),
+      transparent 70%
+    );
+
+  filter: blur(18px);
+
+  pointer-events: none;
+}
+
+.signup-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   CARD TOP LINE
+========================================================= */
+
+.card-top-line {
+  position: absolute;
+
+  top: 0;
+  left: 13%;
+  right: 13%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(91, 214, 255, 0.75),
+      rgba(125, 104, 255, 0.7),
+      transparent
+    );
+
+  box-shadow:
+    0 0 18px rgba(86, 181, 255, 0.5);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 27px;
+}
+
+.card-kicker {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #718cff;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+}
+
+.card-header h2 {
+  margin: 0;
+
+  font-size: 31px;
+  line-height: 1.1;
+
+  letter-spacing: -1px;
+  font-weight: 600;
+}
+
+.card-header p {
+  margin: 8px 0 0;
+
+  color: rgba(169, 183, 216, 0.54);
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.card-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 9px;
+
+  border: 1px solid rgba(84, 222, 190, 0.14);
+
+  border-radius: 20px;
+
+  color: rgba(105, 224, 195, 0.72);
+
+  font-size: 7px;
+
+  letter-spacing: 1.5px;
+}
+
+.card-status span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #65e5c3;
+
+  box-shadow: 0 0 8px #65e5c3;
+}
+
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+}
+
+.field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: rgba(177, 190, 224, 0.62);
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.input-box {
+  position: relative;
+
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid rgba(140, 155, 205, 0.13);
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.input-box:hover {
+  border-color: rgba(139, 166, 226, 0.23);
+}
+
+.input-box:focus-within {
+  border-color: rgba(89, 192, 255, 0.5);
+
+  background:
+    rgba(63, 125, 255, 0.045);
+
+  box-shadow:
+    0 0 0 3px rgba(83, 179, 255, 0.045),
+    0 0 25px rgba(65, 151, 255, 0.08);
+}
+
+.field-icon {
+  width: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(116, 182, 255, 0.65);
+
+  font-size: 11px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 12px 0 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #fff;
+
+  font: inherit;
+  font-size: 11px;
+}
+
+.input-box input::placeholder {
+  color: rgba(150, 163, 195, 0.3);
+}
+
+
+/* =========================================================
+   PASSWORD METER
+========================================================= */
+
+.password-meter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: -3px;
+  margin-bottom: 17px;
+}
+
+.meter-bars {
+  display: flex;
+  gap: 4px;
+}
+
+.meter-bars span {
+  width: 32px;
+  height: 2px;
+
+  border-radius: 10px;
+
+  background: rgba(120, 135, 180, 0.14);
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.meter-bars span.active {
+  background: #65a9ff;
+
+  box-shadow:
+    0 0 8px rgba(86, 168, 255, 0.4);
+}
+
+.password-meter small {
+  color: rgba(150, 165, 200, 0.4);
+
+  font-size: 7px;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.signup-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 14px;
+  padding: 9px 11px;
+
+  border: 1px solid rgba(255, 95, 120, 0.19);
+
+  border-radius: 8px;
+
+  background: rgba(255, 70, 100, 0.04);
+
+  color: rgba(255, 145, 160, 0.88);
+
+  font-size: 9px;
+}
+
+.signup-error span {
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+
+  background: rgba(255, 85, 110, 0.13);
+
+  font-size: 9px;
+}
+
+.signup-error p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   CREATE BUTTON
+========================================================= */
+
+.create-button {
+  position: relative;
+
+  width: 100%;
+  height: 49px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 17px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(153, 188, 255, 0.32);
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #5575ff,
+      #6b63ff 53%,
+      #7559ed
+    );
+
+  color: #fff;
+
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 32px rgba(76, 82, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.create-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 65%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.32),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.65s ease;
+}
+
+.create-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  filter: brightness(1.05);
+
+  box-shadow:
+    0 15px 38px rgba(76, 82, 255, 0.29),
+    0 0 30px rgba(93, 112, 255, 0.12);
+}
+
+.create-button:hover::before {
+  left: 140%;
+}
+
+.create-button:disabled {
+  cursor: wait;
+  opacity: 0.82;
+}
+
+.create-button b {
+  position: relative;
+  z-index: 2;
+
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.create-button span {
+  position: relative;
+  z-index: 2;
+}
+
+.create-button.creating b {
+  animation: buttonSpin 0.8s linear infinite;
+}
+
+@keyframes buttonSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.signup-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: 23px 0 16px;
+}
+
+.signup-divider::before,
+.signup-divider::after {
+  content: "";
+
+  flex: 1;
+
+  height: 1px;
+
+  background: rgba(150, 165, 205, 0.09);
+}
+
+.signup-divider span {
+  color: rgba(150, 165, 200, 0.34);
+
+  font-size: 7px;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   GOOGLE
+========================================================= */
+
+.google-button {
+  position: relative;
+
+  width: 100%;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border: 1px solid rgba(140, 155, 205, 0.13);
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  color: rgba(222, 229, 247, 0.78);
+
+  font: inherit;
+  font-size: 10px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.google-button:hover {
+  border-color: rgba(135, 155, 220, 0.3);
+
+  background:
+    rgba(255, 255, 255, 0.045);
+
+  transform: translateY(-1px);
+}
+
+.google-icon {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.google-button b {
+  position: absolute;
+
+  right: 14px;
+
+  color: rgba(150, 170, 220, 0.42);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   SIGN IN
+========================================================= */
+
+.signin-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 20px;
+
+  font-size: 9px;
+}
+
+.signin-line span {
+  color: rgba(160, 173, 207, 0.45);
+}
+
+.signin-line button {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #8aaaff;
+
+  font: inherit;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.signin-line button:hover {
+  color: #c0d0ff;
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+.security-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 20px;
+  padding-top: 15px;
+
+  border-top: 1px solid rgba(150, 165, 205, 0.07);
+
+  color: rgba(145, 160, 195, 0.3);
+
+  font-size: 7px;
+}
+
+.security-line span {
+  color: rgba(100, 178, 255, 0.6);
+
+  font-size: 11px;
+}
+
+.security-line p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.signup-footer {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  padding-bottom: 18px;
+
+  color: rgba(130, 145, 180, 0.25);
+
+  font-size: 7px;
+
+  letter-spacing: 2px;
+}
+
+.signup-footer i {
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: rgba(110, 140, 255, 0.45);
+
+  box-shadow:
+    0 0 6px rgba(91, 134, 255, 0.5);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .signup-container {
+    grid-template-columns:
+      minmax(0, 1fr)
+      470px;
+
+    gap: 38px;
+  }
+
+  .signup-visual h1 {
+    font-size: 55px;
+  }
+
+  .career-orbit-system {
+    width: 350px;
+    height: 350px;
+
+    right: -30px;
+  }
+
+  .orbit-large {
+    width: 340px;
+  }
+
+  .orbit-medium {
+    width: 270px;
+  }
+
+  .orbit-small {
+    width: 205px;
+  }
+
+  .rocket-trajectory {
+    right: 0;
+    opacity: 0.65;
+  }
+
+  .signup-features {
+    gap: 17px;
+  }
+}
+
+
+@media (max-width: 850px) {
+
+  .signup-container {
+    grid-template-columns: 1fr;
+
+    width: min(540px, calc(100% - 32px));
+
+    padding: 50px 0;
+  }
+
+  .signup-visual {
+    min-height: auto;
+
+    text-align: center;
+
+    align-items: center;
+  }
+
+  .visual-kicker {
+    justify-content: center;
+  }
+
+  .visual-description {
+    text-align: center;
+  }
+
+  .rocket-trajectory {
+    position: relative;
+
+    right: auto;
+    top: auto;
+
+    margin: 10px auto -30px;
+
+    opacity: 0.65;
+  }
+
+  .career-orbit-system {
+    position: relative;
+
+    right: auto;
+    bottom: auto;
+
+    margin: 15px auto 10px;
+  }
+
+  .signup-features {
+    position: relative;
+
+    left: auto;
+    bottom: auto;
+
+    margin-top: 10px;
+  }
+
+  .signup-panel {
+    width: 100%;
+  }
+
+  .signup-galaxy {
+    opacity: 0.2;
+  }
+}
+
+
+@media (max-width: 560px) {
+
+  .signup-brand {
+    width: calc(100% - 32px);
+  }
+
+  .signup-container {
+    width: calc(100% - 24px);
+  }
+
+  .signup-card {
+    padding: 25px 19px;
+
+    border-radius: 20px;
+  }
+
+  .card-header h2 {
+    font-size: 27px;
+  }
+
+  .card-status {
+    display: none;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .signup-visual h1 {
+    font-size: 43px;
+    letter-spacing: -2.5px;
+  }
+
+  .visual-description {
+    font-size: 12px;
+  }
+
+  .career-orbit-system {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orbit-large {
+    width: 285px;
+  }
+
+  .orbit-medium {
+    width: 225px;
+  }
+
+  .orbit-small {
+    width: 175px;
+  }
+
+  .career-planet {
+    width: 90px;
+    height: 90px;
+  }
+
+  .signup-features {
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .feature-item div span {
+    display: none;
+  }
+
+  .signup-footer {
+    display: none;
+  }
+}

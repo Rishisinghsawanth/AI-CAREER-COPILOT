@@ -17,8 +17,9 @@ function Hero() {
   <br />
   <span>into professional readiness</span>
 </h1>
-        <p className="hero-description">
-  Your AI-powered command center for resumes, interviews, skills,
+       <p className="hero-description">
+  Your AI-powered command center for <span>resumes</span>,{" "}
+  <span>interviews</span>, <span>skills</span>,
   <br />
   and the roles that move your career forward.
 </p>

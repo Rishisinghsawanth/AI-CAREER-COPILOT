@@ -1,4 +1,3 @@
-import "./App.css";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Features from "./Features";
@@ -7,10 +6,13 @@ import Signup from "./Signup";
 import Dashboard from "./Dashboard";
 import Footer from "./Footer";
 
+import "./App.css";
+
 function App() {
   return (
     <>
       <Navbar />
+
       <main>
         <Hero />
         <Login />
@@ -18,6 +20,7 @@ function App() {
         <Features />
         <Dashboard />
       </main>
+
       <Footer />
     </>
   );

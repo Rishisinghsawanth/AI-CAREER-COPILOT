@@ -10,7 +10,7 @@ function Login() {
   function handleLogin(e) {
     e.preventDefault();
 
-    if (!email || !password) {
+    if (!email.trim() || !password.trim()) {
       setError("Please enter your email and password.");
       return;
     }
@@ -26,15 +26,12 @@ function Login() {
   return (
     <main className="login-page">
 
-      {/* FUTURISTIC PLANET */}
-      <div className="planet-surface" aria-hidden="true">
-        <div className="planet-grid" />
-        <div className="planet-lights" />
-      </div>
+      {/* =====================================================
+          SPACE BACKGROUND
+      ===================================================== */}
 
-      {/* STARFIELD */}
       <div className="login-stars" aria-hidden="true">
-        {Array.from({ length: 20 }).map((_, index) => (
+        {Array.from({ length: 32 }).map((_, index) => (
           <span
             key={index}
             className={`login-star star-${index + 1}`}
@@ -42,17 +39,25 @@ function Login() {
         ))}
       </div>
 
-      {/* AMBIENT LIGHT */}
       <div className="login-glow login-glow-one" />
       <div className="login-glow login-glow-two" />
 
-      {/* SINGLE OUTER BOX */}
+      {/* =====================================================
+          MAIN AUTH LAYOUT
+      ===================================================== */}
+
       <section className="login-layout">
 
-        {/* LEFT SIDE */}
+        {/* ===================================================
+            LEFT — SPACE / ROCKET EXPERIENCE
+        =================================================== */}
+
         <div className="login-showcase">
 
-          {/* ROCKET */}
+          <div className="showcase-orbit orbit-one" />
+          <div className="showcase-orbit orbit-two" />
+
+          {/* Rocket */}
           <div className="rocket-stage">
 
             <div className="rocket-aura" />
@@ -63,10 +68,18 @@ function Login() {
               }`}
               aria-hidden="true"
             >
+
               <div className="rocket-body">
-                <span className="rocket-window" />
+
+                <div className="rocket-nose" />
+
+                <span className="rocket-window">
+                  <span />
+                </span>
+
                 <span className="rocket-fin rocket-fin-left" />
                 <span className="rocket-fin rocket-fin-right" />
+
               </div>
 
               <div className="rocket-flame">
@@ -80,124 +93,189 @@ function Login() {
                 <i />
                 <i />
               </div>
+
+            </div>
+
+            {/* Launch trajectory */}
+            <div className="rocket-trail">
+              <span />
+              <span />
+              <span />
             </div>
 
           </div>
 
-          {/* WELCOME BACK */}
+          {/* Showcase text */}
           <div className="showcase-copy">
-            <p className="eyebrow">WELCOME BACK!</p>
+
+            <span className="showcase-label">
+              PLACEMENTPILOT AI
+            </span>
+
+            <h1>
+              Your career.
+              <br />
+              <span>Ready for launch.</span>
+            </h1>
+
+            <p>
+              Sign in to continue building your career with
+              intelligent resume analysis, interview practice
+              and placement preparation.
+            </p>
+
           </div>
 
-          {/* STATS */}
+          {/* Stats */}
           <div className="showcase-stats">
 
-            <div>
+            <div className="showcase-stat">
               <strong>AI</strong>
               <span>Career Intelligence</span>
             </div>
 
             <div className="stat-divider" />
 
-            <div>
+            <div className="showcase-stat">
               <strong>24/7</strong>
               <span>Smart Preparation</span>
             </div>
 
             <div className="stat-divider" />
 
-            <div>
+            <div className="showcase-stat">
               <strong>∞</strong>
               <span>Practice Sessions</span>
             </div>
 
           </div>
+
         </div>
 
-        {/* RIGHT SIDE */}
-       {/* RIGHT SIDE */}
-<div className="login-side">
-  <div className="career-visual">
+        {/* ===================================================
+            RIGHT — LOGIN
+        =================================================== */}
 
-  <div className="career-visual-glow"></div>
+        <div className="login-side">
 
-  <div className="career-orbit orbit-a"></div>
-  <div className="career-orbit orbit-b"></div>
+          {/* Career visual */}
+          <div className="career-visual">
 
-  <div className="career-core">
-    <div className="career-core-ring">
-      <span>✦</span>
-    </div>
-  </div>
+            <div className="career-visual-glow" />
 
-  <div className="career-card career-card-top">
-    <span className="career-dot"></span>
-    <div>
-      <b>AI Career Analysis</b>
-      <small>Profile optimized</small>
-    </div>
-  </div>
+            <div
+              className="career-star"
+              aria-hidden="true"
+            >
+              ✦
+            </div>
 
-  <div className="career-card career-card-left">
-    <div className="career-card-icon">↗</div>
-    <div>
-      <small>RESUME SCORE</small>
-      <b>87<span>/100</span></b>
-    </div>
-  </div>
+            {/* AI status */}
+            <div className="career-card career-card-top">
 
-  <div className="career-card career-card-right">
-    <div className="career-card-icon purple">◆</div>
-    <div>
-      <small>INTERVIEW READINESS</small>
-      <b>92%</b>
-    </div>
-  </div>
+              <span className="career-dot" />
 
-  <div className="career-card career-card-bottom">
-    <div className="career-progress">
-      <span></span>
-    </div>
-    <div>
-      <b>Career Progress</b>
-      <small>You're on the right trajectory</small>
-    </div>
-  </div>
-
-  <div className="career-copy">
-    <span>AI-POWERED CAREER INTELLIGENCE</span>
-
-    <h2>
-      Your next
-      <strong> opportunity starts here.</strong>
-    </h2>
-
-    <p>
-      Analyze. Prepare. Practice. Get placement ready
-      with one intelligent career platform.
-    </p>
-  </div>
-
-</div>
-
-  {/* EXISTING LOGIN CARD */}
-  <div className="login-card">
-            {/* LOGIN HEADING */}
-            <div className="login-heading">
-
-              <p className="eyebrow">WELCOME BACK!</p>
-
-              <h2>Sign in</h2>
-
-              <span>
-                Login to continue your journey
-              </span>
+              <div>
+                <b>AI Career Analysis</b>
+                <small>Profile optimized</small>
+              </div>
 
             </div>
 
-            {/* LOGIN FORM */}
+            {/* Resume */}
+            <div className="career-card career-card-left">
+
+              <div className="career-card-icon">
+                ↗
+              </div>
+
+              <div>
+                <small>RESUME SCORE</small>
+
+                <b>
+                  87<span>/100</span>
+                </b>
+              </div>
+
+            </div>
+
+            {/* Interview */}
+            <div className="career-card career-card-right">
+
+              <div className="career-card-icon purple">
+                ◆
+              </div>
+
+              <div>
+                <small>INTERVIEW READINESS</small>
+                <b>92%</b>
+              </div>
+
+            </div>
+
+            {/* Progress */}
+            <div className="career-card career-card-bottom">
+
+              <div className="career-progress">
+                <span />
+              </div>
+
+              <div>
+                <b>Career Progress</b>
+
+                <small>
+                  You're on the right trajectory
+                </small>
+              </div>
+
+            </div>
+
+            {/* Career message */}
+            <div className="career-copy">
+
+              <span>
+                AI-POWERED CAREER INTELLIGENCE
+              </span>
+
+              <h2>
+                Your next
+                <strong> opportunity starts here.</strong>
+              </h2>
+
+              <p>
+                Analyze. Prepare. Practice. Get placement ready
+                with one intelligent career platform.
+              </p>
+
+            </div>
+
+          </div>
+
+          {/* =================================================
+              LOGIN CARD
+          ================================================= */}
+
+          <div className="login-card">
+
+            {/* Header */}
+            <div className="login-heading">
+
+              <span className="login-kicker">
+                WELCOME BACK
+              </span>
+
+              <h2>Sign in</h2>
+
+              <p>
+                Continue your journey with PlacementPilot AI
+              </p>
+
+            </div>
+
+            {/* Form */}
             <form onSubmit={handleLogin}>
 
+              {/* Email */}
               <div className="input-group">
 
                 <label htmlFor="email">
@@ -206,16 +284,23 @@ function Login() {
 
                 <div className="input-wrapper">
 
-                  <span className="input-icon">
-                    ✉
+                  <span
+                    className="input-icon"
+                    aria-hidden="true"
+                  >
+                    @
                   </span>
 
                   <input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="you@example.com"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (error) setError("");
+                    }}
                     autoComplete="email"
                   />
 
@@ -223,6 +308,7 @@ function Login() {
 
               </div>
 
+              {/* Password */}
               <div className="input-group">
 
                 <div className="password-label">
@@ -231,7 +317,15 @@ function Login() {
                     Password
                   </label>
 
-                  <button type="button">
+                  <button
+                    type="button"
+                    className="forgot-password"
+                    onClick={() => {
+                      setError(
+                        "Password recovery will be available soon."
+                      );
+                    }}
+                  >
                     Forgot password?
                   </button>
 
@@ -239,16 +333,23 @@ function Login() {
 
                 <div className="input-wrapper">
 
-                  <span className="input-icon">
-                    ⌁
+                  <span
+                    className="input-icon"
+                    aria-hidden="true"
+                  >
+                    ◆
                   </span>
 
                   <input
                     id="password"
+                    name="password"
                     type="password"
                     placeholder="Enter your password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      if (error) setError("");
+                    }}
                     autoComplete="current-password"
                   />
 
@@ -256,30 +357,35 @@ function Login() {
 
               </div>
 
-              {/* REMEMBER ME */}
+              {/* Remember */}
               <label className="remember">
 
                 <input type="checkbox" />
 
                 <span className="custom-checkbox" />
 
-                Remember me
+                <span>Remember me</span>
 
               </label>
 
-              {/* ERROR */}
+              {/* Error */}
               {error && (
-                <p className="login-error">
-                  {error}
-                </p>
+                <div
+                  className="login-error"
+                  role="alert"
+                >
+                  <span>!</span>
+                  <p>{error}</p>
+                </div>
               )}
 
-              {/* SIGN IN */}
+              {/* Submit */}
               <button
                 className={`login-submit ${
                   launching ? "launch-active" : ""
                 }`}
                 type="submit"
+                disabled={launching}
               >
 
                 <span>
@@ -288,57 +394,59 @@ function Login() {
                     : "Sign in"}
                 </span>
 
-                <b>→</b>
+                <b aria-hidden="true">
+                  {launching ? "◌" : "→"}
+                </b>
 
               </button>
 
             </form>
 
-            {/* DIVIDER */}
+            {/* Divider */}
             <div className="divider">
               <span>OR CONTINUE WITH</span>
             </div>
 
-            {/* SOCIAL LOGIN */}
+            {/* Social */}
             <div className="social-login">
 
               <button type="button">
 
                 <img
                   src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-                  alt="Google"
+                  alt=""
                 />
 
-                Google
+                <span>Google</span>
 
               </button>
 
               <button type="button">
 
-                <img
-                  src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
-                  alt="GitHub"
-                />
+                <span className="github-symbol">
+                  GH
+                </span>
 
-                GitHub
+                <span>GitHub</span>
 
               </button>
 
             </div>
 
-            {/* SIGN UP */}
+            {/* Signup */}
             <p className="signup-text">
 
-              Don't have an account?
+              <span>
+                Don't have an account?
+              </span>
 
-              <button type="button">
+              <a href="#signup">
                 Create one
-              </button>
+              </a>
 
             </p>
 
           </div>
-          
 
         </div>
 
