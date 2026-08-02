@@ -2,8 +2,8 @@ function Navbar() {
   return (
     <nav className="navbar">
       <a href="#hero" className="logo">
-  <span className="logo-mark">🚀</span>
-  <h2>PlacementPilot <span>AI</span></h2>
+    <span className="ai-mark">✦</span>
+  <h2>AI CAREER COPILOT</h2>
 </a>
 
       <ul>
