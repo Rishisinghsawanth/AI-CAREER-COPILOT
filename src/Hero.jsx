@@ -47,381 +47,546 @@ function Hero() {
   return (
     <section className="hero" id="hero">
 
-      {/* Background */}
-      <div className="hero-grid"></div>
+      {/* =========================
+          BACKGROUND
+      ========================== */}
+      <div className="hero-background" aria-hidden="true">
+        <div className="hero-grid"></div>
 
-      <div className="hero-orb hero-orb-one"></div>
-      <div className="hero-orb hero-orb-two"></div>
+        <div className="hero-orb hero-orb-one"></div>
+        <div className="hero-orb hero-orb-two"></div>
 
-      <div className="hero-atmosphere hero-atmosphere-one"></div>
-      <div className="hero-atmosphere hero-atmosphere-two"></div>
+        <div className="hero-atmosphere hero-atmosphere-one"></div>
+        <div className="hero-atmosphere hero-atmosphere-two"></div>
 
-      {/* Galaxy stars */}
-      <div className="space-stars" aria-hidden="true">
-        {Array.from({ length: 55 }, (_, index) => (
-          <span
-            key={index}
-            className={`star star-${index + 1}`}
-          ></span>
-        ))}
+        <div className="space-stars">
+          {Array.from({ length: 55 }, (_, index) => (
+            <span
+              key={index}
+              className={`star star-${index + 1}`}
+            ></span>
+          ))}
+        </div>
       </div>
 
-      {/* Main content */}
-      <div className="hero-content">
+      {/* =========================
+          MAIN HERO LAYOUT
+      ========================== */}
+      <div className="hero-container">
 
-        <div className="hero-badge">
-          <span className="status-dot"></span>
-          AI-powered placement intelligence
-        </div>
+        {/* =========================
+            LEFT / PRIMARY CONTENT
+        ========================== */}
+        <div className="hero-content">
 
-        <h1 className="hero-title">
-          Turn your preparation
-          <br />
-          <span>into professional readiness</span>
-        </h1>
+          <div className="hero-copy">
 
-        <p className="hero-description">
-          Your AI-powered command center for <span>resumes</span>,{" "}
-          <span>interviews</span>, <span>skills</span>,
-          <br />
-          and the roles that move your career forward
-        </p>
-
-        <div className="hero-buttons">
-
-          <a href="#login" className="primary-btn">
-            Start preparing
-            <span>→</span>
-          </a>
-
-          <a href="#features" className="secondary-btn">
-            Explore platform
-          </a>
-
-        </div>
-
-        {/* Interactive feature navigation */}
-        <div className="hero-proof">
-
-          <button
-            type="button"
-            className={`proof-item ${
-              activeFeature === "resume" ? "active" : ""
-            }`}
-            onClick={() => setActiveFeature("resume")}
-          >
-            <span className="proof-number">01</span>
-
-            <div>
-              <strong>Resume Intelligence</strong>
-              <small>Optimize your profile</small>
+            <div className="hero-badge">
+              <span className="status-dot"></span>
+              AI-powered placement intelligence
             </div>
-          </button>
 
-          <div className="proof-line"></div>
+            <h1 className="hero-title">
+              Turn your preparation
+              <br />
+              <span>into professional readiness</span>
+            </h1>
 
-          <button
-            type="button"
-            className={`proof-item ${
-              activeFeature === "interview" ? "active" : ""
-            }`}
-            onClick={() => setActiveFeature("interview")}
-          >
-            <span className="proof-number">02</span>
+            <p className="hero-description">
+              Your AI-powered command center for{" "}
+              <span>resumes</span>, <span>interviews</span>,{" "}
+              <span>skills</span>,
+              <br className="hero-description-break" />
+              and the roles that move your career forward
+            </p>
 
-            <div>
-              <strong>AI Interview</strong>
-              <small>Practice with precision</small>
+            <div className="hero-buttons">
+
+              <a href="#login" className="primary-btn">
+                <span className="primary-btn-label">
+                  Start preparing
+                </span>
+
+                <span className="primary-btn-arrow">
+                  →
+                </span>
+              </a>
+
+              <a href="#features" className="secondary-btn">
+                Explore platform
+              </a>
+
             </div>
-          </button>
+          </div>
 
-          <div className="proof-line"></div>
-
-          <button
-            type="button"
-            className={`proof-item ${
-              activeFeature === "career" ? "active" : ""
-            }`}
-            onClick={() => setActiveFeature("career")}
+          {/* =========================
+              FEATURE NAVIGATION
+          ========================== */}
+          <div
+            className="hero-proof"
+            aria-label="Platform capabilities"
           >
-            <span className="proof-number">03</span>
 
-            <div>
-              <strong>Career Matching</strong>
-              <small>Find your best fit</small>
-            </div>
-          </button>
+            <button
+              type="button"
+              className={`proof-item ${
+                activeFeature === "resume" ? "active" : ""
+              }`}
+              onClick={() => setActiveFeature("resume")}
+              aria-pressed={activeFeature === "resume"}
+            >
+              <span className="proof-number">
+                {featureData.resume.number}
+              </span>
 
-        </div>
+              <div className="proof-copy">
+                <strong>Resume Intelligence</strong>
+                <small>Optimize your profile</small>
+              </div>
+            </button>
 
-        {/* Floating AI product preview */}
-        <div className="feature-preview-shell">
+            <div
+              className="proof-line"
+              aria-hidden="true"
+            ></div>
 
-          <div className="ai-activity">
+            <button
+              type="button"
+              className={`proof-item ${
+                activeFeature === "interview" ? "active" : ""
+              }`}
+              onClick={() => setActiveFeature("interview")}
+              aria-pressed={activeFeature === "interview"}
+            >
+              <span className="proof-number">
+                {featureData.interview.number}
+              </span>
 
-            <span className="ai-activity-dot"></span>
+              <div className="proof-copy">
+                <strong>AI Interview</strong>
+                <small>Practice with precision</small>
+              </div>
+            </button>
 
-            <span className="ai-activity-text">
-              AI analyzing your career profile...
-            </span>
+            <div
+              className="proof-line"
+              aria-hidden="true"
+            ></div>
 
-            <span className="ai-activity-divider"></span>
+            <button
+              type="button"
+              className={`proof-item ${
+                activeFeature === "career" ? "active" : ""
+              }`}
+              onClick={() => setActiveFeature("career")}
+              aria-pressed={activeFeature === "career"}
+            >
+              <span className="proof-number">
+                {featureData.career.number}
+              </span>
 
-            <span className="activity-check">✓ Resume optimized</span>
-            <span className="activity-check">✓ Skills mapped</span>
-            <span className="activity-check">✓ Roles matched</span>
+              <div className="proof-copy">
+                <strong>Career Matching</strong>
+                <small>Find your best fit</small>
+              </div>
+            </button>
 
           </div>
 
-          <div className="feature-preview">
+          {/* =========================
+              INTERACTIVE PRODUCT PREVIEW
+          ========================== */}
+          <div className="feature-preview-shell">
 
-            <div className="preview-header">
+            <div className="ai-activity">
 
-              <div className="preview-heading">
+              <span className="ai-activity-dot"></span>
 
-                <span className="preview-icon">✦</span>
+              <span className="ai-activity-text">
+                AI analyzing your career profile...
+              </span>
 
-                <div>
-                  <strong>{active.title}</strong>
-                  <small>{active.subtitle}</small>
-                </div>
+              <span className="ai-activity-divider"></span>
 
-              </div>
+              <span className="activity-check">
+                ✓ Resume optimized
+              </span>
 
-              <span className="preview-status">
-                <i></i>
-                LIVE
+              <span className="activity-check">
+                ✓ Skills mapped
+              </span>
+
+              <span className="activity-check">
+                ✓ Roles matched
               </span>
 
             </div>
 
-            <div className="preview-metrics">
+            <div className="feature-preview">
 
-              {active.metrics.map((metric, index) => (
-                <div
-                  className="preview-metric"
-                  key={`${activeFeature}-${index}`}
-                >
+              <div className="preview-header">
 
-                  <div className="metric-top">
+                <div className="preview-heading">
 
-                    <span>{metric.label}</span>
+                  <span className="preview-icon">
+                    ✦
+                  </span>
 
-                    <strong>{metric.value}</strong>
+                  <div>
+                    <strong>
+                      {active.title}
+                    </strong>
 
-                  </div>
-
-                  <div className="metric-progress">
-                    <span
-                      style={{
-                        width: `${metric.progress}%`,
-                      }}
-                    ></span>
+                    <small>
+                      {active.subtitle}
+                    </small>
                   </div>
 
                 </div>
-              ))}
+
+                <span className="preview-status">
+                  <i></i>
+                  LIVE
+                </span>
+
+              </div>
+
+              <div className="preview-metrics">
+
+                {active.metrics.map((metric, index) => (
+                  <div
+                    className="preview-metric"
+                    key={`${activeFeature}-${index}`}
+                  >
+
+                    <div className="metric-top">
+
+                      <span>
+                        {metric.label}
+                      </span>
+
+                      <strong>
+                        {metric.value}
+                      </strong>
+
+                    </div>
+
+                    <div className="metric-progress">
+
+                      <span
+                        style={{
+                          width: `${metric.progress}%`,
+                        }}
+                      ></span>
+
+                    </div>
+
+                  </div>
+                ))}
+
+              </div>
+
+              <div className="preview-footer">
+
+                <span className="preview-footer-dot"></span>
+
+                <span>
+                  {active.status}
+                </span>
+
+                <span className="preview-arrow">
+                  ↗
+                </span>
+
+              </div>
 
             </div>
-
-            <div className="preview-footer">
-
-              <span className="preview-footer-dot"></span>
-
-              <span>{active.status}</span>
-
-              <span className="preview-arrow">↗</span>
-
-            </div>
-
           </div>
-
         </div>
 
-      </div>
+        {/* =========================
+            RIGHT PRODUCT VISUAL
+        ========================== */}
+        <div className="hero-visual">
 
-      {/* Right-side product visualization */}
-      <div className="hero-visual">
+          <div className="hero-visual-glow"></div>
 
-        <div className="hero-visual-glow"></div>
+          <div className="hero-dashboard-stack">
 
-        <div className="hero-dashboard-stack">
+            {/* =========================
+                CAREER INSIGHTS
+            ========================== */}
+            <div className="ai-panel panel-back">
 
-          {/* Back analytics panel */}
-          <div className="ai-panel panel-back">
+              <div className="panel-top">
 
-            <div className="panel-top">
-              <span className="panel-icon">✦</span>
-              <span>CAREER INSIGHTS</span>
-              <span className="panel-live">LIVE</span>
+                <span className="panel-icon">
+                  ✦
+                </span>
+
+                <span>
+                  CAREER INSIGHTS
+                </span>
+
+                <span className="panel-live">
+                  LIVE
+                </span>
+
+              </div>
+
+              <div className="panel-title">
+                Top <strong>5%</strong>
+              </div>
+
+              <div className="panel-subtitle">
+                Your profile is outperforming similar candidates
+              </div>
+
+              <div className="mini-chart">
+
+                <span className="chart-line"></span>
+
+                <span className="chart-point p1"></span>
+                <span className="chart-point p2"></span>
+                <span className="chart-point p3"></span>
+                <span className="chart-point p4"></span>
+                <span className="chart-point p5"></span>
+
+              </div>
+
+              <div className="chart-labels">
+                <span>Skills</span>
+                <span>Projects</span>
+                <span>ATS</span>
+                <span>Interview</span>
+              </div>
+
             </div>
 
-            <div className="panel-title">
-              Top <strong>5%</strong>
-            </div>
+            {/* =========================
+                RESUME INTELLIGENCE
+            ========================== */}
+            <div className="ai-panel panel-main">
 
-            <div className="panel-subtitle">
-              Your profile is outperforming similar candidates
-            </div>
+              <div className="panel-header">
 
-            <div className="mini-chart">
-              <span className="chart-line"></span>
-              <span className="chart-point p1"></span>
-              <span className="chart-point p2"></span>
-              <span className="chart-point p3"></span>
-              <span className="chart-point p4"></span>
-              <span className="chart-point p5"></span>
-            </div>
+                <div className="panel-brand">
 
-            <div className="chart-labels">
-              <span>Skills</span>
-              <span>Projects</span>
-              <span>ATS</span>
-              <span>Interview</span>
-            </div>
+                  <span className="resume-intelligence-star">
+                    ✦
+                  </span>
 
-          </div>
+                  <div>
 
-          {/* Main Resume AI panel */}
-          <div className="ai-panel panel-main">
+                    <strong>
+                      Resume Intelligence
+                    </strong>
 
-            <div className="panel-header">
+                    <small>
+                      AI analysis complete
+                    </small>
 
-              <div className="panel-brand">
+                  </div>
 
-                <div className="panel-logo">✦</div>
+                </div>
 
-                <div>
-                  <strong>Resume Intelligence</strong>
-                  <small>AI analysis complete</small>
+                <div className="panel-status">
+                  <span></span>
+                  98%
                 </div>
 
               </div>
 
-              <div className="panel-status">
-                <span></span>
-                98%
-              </div>
+              <div className="resume-preview">
 
-            </div>
-
-            <div className="resume-preview">
-
-              <div className="resume-heading">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <div className="resume-lines">
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-              </div>
-
-              <div className="resume-section">
-
-                <div className="resume-section-title">
+                <div className="resume-heading">
                   <span></span>
-                  EXPERIENCE
-                </div>
-
-                <div className="resume-row">
                   <span></span>
                   <span></span>
                 </div>
 
-                <div className="resume-row">
-                  <span></span>
-                  <span></span>
+                <div className="resume-lines">
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </div>
+
+                <div className="resume-section">
+
+                  <div className="resume-section-title">
+                    <span></span>
+                    EXPERIENCE
+                  </div>
+
+                  <div className="resume-row">
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                  <div className="resume-row">
+                    <span></span>
+                    <span></span>
+                  </div>
+
                 </div>
 
               </div>
 
             </div>
 
-            <div className="ai-analysis">
+            {/* =========================
+                AI RECOMMENDATION
+                SEPARATE BLOCK
+            ========================== */}
+            <div className="ai-panel panel-recommendation">
 
-              <div className="analysis-icon">✦</div>
+              <div className="recommendation-icon">
+                ✦
+              </div>
 
-              <div className="analysis-content">
-                <strong>AI recommendation</strong>
+              <div className="recommendation-content">
+
+                <strong>
+                  AI Recommendation
+                </strong>
 
                 <small>
                   Strengthen your project impact statements
                 </small>
+
               </div>
 
-              <span className="analysis-arrow">→</span>
+              <span className="recommendation-arrow">
+                →
+              </span>
 
             </div>
 
-          </div>
+            {/* =========================
+                RESUME SCORE
+            ========================== */}
+            <div className="ai-panel panel-score">
 
-          {/* Resume score panel */}
-          <div className="ai-panel panel-score">
+              <div className="score-header">
 
-            <div className="score-header">
-              <span>RESUME SCORE</span>
-              <span className="score-dot"></span>
-            </div>
+                <span className="score-title">
 
-            <div className="score-body">
+                  <span className="score-star">
+                    ✦
+                  </span>
 
-              <div className="score-ring">
+                  RESUME SCORE
 
-                <div className="score-ring-inner">
-                  <strong>88</strong>
-                  <small>/100</small>
+                </span>
+
+                <span className="score-dot"></span>
+
+              </div>
+
+              <div className="score-body">
+
+                <div className="score-ring">
+
+                  <div className="score-ring-inner">
+
+                    <strong>
+                      88
+                    </strong>
+
+                    <small>
+                      /100
+                    </small>
+
+                  </div>
+
+                </div>
+
+                <div className="score-info">
+
+                  <strong>
+                    Excellent
+                  </strong>
+
+                  <small>
+                    +14 this week
+                  </small>
+
                 </div>
 
               </div>
 
-              <div className="score-info">
-                <strong>Excellent</strong>
-                <small>+14 this week</small>
+              <div className="score-progress">
+                <span></span>
               </div>
 
             </div>
 
-            <div className="score-progress">
-              <span></span>
+            {/* =========================
+                AI MOCK INTERVIEW
+            ========================== */}
+            <div className="ai-panel panel-interview">
+
+              <div className="interview-icon">
+                ◉
+              </div>
+
+              <div className="interview-content">
+
+                <strong>
+                  AI Mock Interview
+                </strong>
+
+                <small>
+                  Ready when you are
+                </small>
+
+              </div>
+
+              <div className="interview-mic">
+                ◉
+              </div>
+
             </div>
+
+            {/* =========================
+                DASHBOARD PARTICLES
+            ========================== */}
+            <span
+              className="dashboard-particle particle-one"
+              aria-hidden="true"
+            ></span>
+
+            <span
+              className="dashboard-particle particle-two"
+              aria-hidden="true"
+            ></span>
+
+            <span
+              className="dashboard-particle particle-three"
+              aria-hidden="true"
+            ></span>
 
           </div>
-
-          {/* AI interview mini card */}
-          <div className="ai-panel panel-interview">
-
-            <div className="interview-icon">
-              ◉
-            </div>
-
-            <div className="interview-content">
-              <strong>AI Mock Interview</strong>
-              <small>Ready when you are</small>
-            </div>
-
-            <div className="interview-mic">
-              ◉
-            </div>
-
-          </div>
-
-          <span className="dashboard-particle particle-one"></span>
-          <span className="dashboard-particle particle-two"></span>
-          <span className="dashboard-particle particle-three"></span>
-
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="hero-scroll">
-        <span>SCROLL TO EXPLORE</span>
-        <b>↓</b>
+      {/* =========================
+          SCROLL INDICATOR
+      ========================== */}
+      <div
+        className="hero-scroll"
+        aria-hidden="true"
+      >
+        <span>
+          SCROLL TO EXPLORE
+        </span>
+
+        <b>
+          ↓
+        </b>
       </div>
 
     </section>
