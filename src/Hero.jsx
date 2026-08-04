@@ -1,9 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Hero.css";
 
 function Hero() {
+  /* =========================
+      CAREER INSIGHTS NUMBER
+  ========================== */
+  const [topPercentile, setTopPercentile] = useState(1);
+
+  useEffect(() => {
+    let value = 1;
+    let increasing = true;
+
+    const interval = setInterval(() => {
+      if (increasing) {
+        value++;
+
+        if (value >= 10) {
+          value = 10;
+          increasing = false;
+        }
+      } else {
+        value--;
+
+        if (value <= 1) {
+          value = 1;
+          increasing = true;
+        }
+      }
+
+      setTopPercentile(value);
+    }, 120);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const [activeFeature, setActiveFeature] = useState("resume");
 
+  /* =========================
+      FEATURE DATA
+  ========================== */
   const featureData = {
     resume: {
       number: "01",
@@ -43,6 +78,26 @@ function Hero() {
   };
 
   const active = featureData[activeFeature];
+
+  /* =========================
+      RESUME SCORE
+      75 → 90 → 75
+  ========================== */
+  const [resumeScore, setResumeScore] = useState(75);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setResumeScore((current) => {
+        if (current >= 90) {
+          return 75;
+        }
+
+        return current + 1;
+      });
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="hero" id="hero">
@@ -272,13 +327,7 @@ function Hero() {
                     </div>
 
                     <div className="metric-progress">
-
-                      <span
-                        style={{
-                          width: `${metric.progress}%`,
-                        }}
-                      ></span>
-
+                      <span></span>
                     </div>
 
                   </div>
@@ -335,7 +384,7 @@ function Hero() {
               </div>
 
               <div className="panel-title">
-                Top <strong>5%</strong>
+                Top <strong>{topPercentile}%</strong>
               </div>
 
               <div className="panel-subtitle">
@@ -391,9 +440,9 @@ function Hero() {
                 </div>
 
                 <div className="panel-status">
-                  <span></span>
-                  98%
-                </div>
+  <span></span>
+  <AnimatedResumePercent />
+</div>
 
               </div>
 
@@ -439,19 +488,26 @@ function Hero() {
 
             {/* =========================
                 AI RECOMMENDATION
-                SEPARATE BLOCK
             ========================== */}
-            <div className="ai-panel panel-recommendation">
+            <div className="panel-recommendation">
 
-              <div className="recommendation-icon">
-                ✦
+              <div className="recommendation-title-row">
+
+                <span className="recommendation-star">
+                  ✦
+                </span>
+
+                <strong>
+                  AI RECOMMENDATION
+                </strong>
+
+                <span className="recommendation-robot">
+                  🤖
+                </span>
+
               </div>
 
               <div className="recommendation-content">
-
-                <strong>
-                  AI Recommendation
-                </strong>
 
                 <small>
                   Strengthen your project impact statements
@@ -490,10 +546,20 @@ function Hero() {
 
                 <div className="score-ring">
 
+                  <div
+                    className="score-ring-progress"
+                    style={{
+                      background: `conic-gradient(
+                        #6d85ff ${resumeScore * 3.6}deg,
+                        rgba(255, 255, 255, 0.07) ${resumeScore * 3.6}deg
+                      )`,
+                    }}
+                  ></div>
+
                   <div className="score-ring-inner">
 
                     <strong>
-                      88
+                      {resumeScore}
                     </strong>
 
                     <small>
@@ -529,15 +595,19 @@ function Hero() {
             ========================== */}
             <div className="ai-panel panel-interview">
 
-              <div className="interview-icon">
-                ◉
-              </div>
-
               <div className="interview-content">
 
-                <strong>
-                  AI Mock Interview
-                </strong>
+                <div className="interview-title-row">
+
+                  <span className="interview-star">
+                    ✦
+                  </span>
+
+                  <strong>
+                    AI MOCK INTERVIEW
+                  </strong>
+
+                </div>
 
                 <small>
                   Ready when you are
@@ -591,6 +661,34 @@ function Hero() {
 
     </section>
   );
+}
+function AnimatedResumePercent() {
+  const [value, setValue] = useState(75);
+
+  useEffect(() => {
+    let current = 75;
+    let direction = 1;
+
+    const interval = setInterval(() => {
+      current += direction;
+
+      if (current >= 90) {
+        current = 90;
+        direction = -1;
+      }
+
+      if (current <= 75) {
+        current = 75;
+        direction = 1;
+      }
+
+      setValue(current);
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return <>{value}%</>;
 }
 
 export default Hero;

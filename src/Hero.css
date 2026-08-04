@@ -1569,32 +1569,24 @@
   margin-top: 22px;
 }
 
-
 /* Circular score */
 
 .hero-dashboard-stack .panel-score .score-ring {
   width: 78px;
   height: 78px;
-
   flex: 0 0 78px;
-
   padding: 5px;
-
   display: grid;
   place-items: center;
-
   box-sizing: border-box;
-
   border-radius: 50%;
-
   background:
     conic-gradient(
       #6d85ff 0 88%,
       rgba(255, 255, 255, 0.07) 88% 100%
     );
-
-  box-shadow:
-    0 0 22px rgba(91, 124, 255, 0.16);
+box-shadow:
+    0 0 22px rgba(91, 124, 255, 0.18) !important;
 }
 
 
@@ -1706,6 +1698,53 @@
   box-shadow:
     0 0 10px rgba(91, 124, 255, 0.35);
 }
+/* =========================================================
+   FINAL FIX — RESUME INTELLIGENCE EXPERIENCE VISIBILITY
+========================================================= */
+
+/* =========================================
+   RESUME INTELLIGENCE — COMPACT EXPERIENCE
+========================================= */
+
+.panel-main .resume-preview {
+  position: relative;
+  height: 145px !important;
+  overflow: hidden !important;
+  box-sizing: border-box;
+
+  /* Grey resume surface ends before the bottom */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(248, 250, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.025) 58%,
+      rgba(255, 255, 255, 0) 78%
+    ) !important;
+}
+/* Keep the top resume area compact */
+.panel-main .resume-heading {
+  margin-bottom: 5px !important;
+}
+
+.panel-main .resume-lines {
+  margin-bottom: 3px !important;
+}
+
+/* Move EXPERIENCE upward */
+.panel-main .resume-section {
+  position: relative !important;
+  margin-top: 0 !important;
+}
+
+/* EXPERIENCE heading */
+.panel-main .resume-section-title {
+  margin-bottom: 4px !important;
+}
+
+/* Keep rows compact */
+.panel-main .resume-row {
+  margin-top: 3px !important;
+}
 .resume-intelligence-star {
   display: inline-flex;
   align-items: center;
@@ -1738,22 +1777,106 @@
     filter: brightness(1.8);
   }
 }
-.ai-recommendation-star {
-  color: #ffffff;
-  text-shadow:
-    0 0 4px #ffffff,
-    0 0 10px rgba(255, 255, 255, 0.9),
-    0 0 20px rgba(120, 170, 255, 0.9),
-    0 0 32px rgba(90, 120, 255, 0.6);
+/* AI RECOMMENDATION STAR */
+.panel-recommendation .recommendation-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  animation: aiRecommendationStarShine 2s ease-in-out infinite;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  line-height: 1;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  transform: scale(1);
+  transform-origin: center;
+
+  animation: recommendationStarGlow 4s ease-in-out infinite;
 }
 
-.ai-recommendation strong,
-.ai-recommendation small {
-  color: #ffffff;
-}
 
+/* Smooth glow cycle */
+@keyframes recommendationStarGlow {
+
+  /* Normal */
+  0% {
+    transform: scale(1);
+    opacity: 0.78;
+    filter: brightness(1);
+
+    text-shadow:
+      0 0 2px rgba(255,255,255,0.7),
+      0 0 5px rgba(103,217,255,0.35);
+  }
+
+  /* Slowly starts glowing */
+  60% {
+    transform: scale(1);
+    opacity: 0.82;
+    filter: brightness(1.05);
+
+    text-shadow:
+      0 0 3px rgba(255,255,255,0.8),
+      0 0 7px rgba(103,217,255,0.5),
+      0 0 12px rgba(91,124,255,0.35);
+  }
+
+  /* Glow builds */
+  70% {
+    transform: scale(1.18);
+    opacity: 0.95;
+    filter: brightness(1.35);
+
+    text-shadow:
+      0 0 4px #ffffff,
+      0 0 9px rgba(255,255,255,0.95),
+      0 0 16px rgba(103,217,255,0.8),
+      0 0 24px rgba(91,124,255,0.6);
+  }
+
+  /* Peak — bigger + strong glow */
+  76% {
+    transform: scale(1.5);
+    opacity: 1;
+    filter: brightness(1.7);
+
+    text-shadow:
+      0 0 5px #ffffff,
+      0 0 11px #ffffff,
+      0 0 20px rgba(103,217,255,1),
+      0 0 32px rgba(91,124,255,0.9);
+  }
+
+  /* Smoothly fades */
+  84% {
+    transform: scale(1.18);
+    opacity: 0.9;
+    filter: brightness(1.25);
+
+    text-shadow:
+      0 0 4px rgba(255,255,255,0.85),
+      0 0 9px rgba(103,217,255,0.55);
+  }
+
+  /* Back to normal */
+  92% {
+    transform: scale(1);
+    opacity: 0.78;
+    filter: brightness(1);
+
+    text-shadow:
+      0 0 2px rgba(255,255,255,0.7),
+      0 0 5px rgba(103,217,255,0.35);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.78;
+  }
+}
 @keyframes aiRecommendationStarShine {
   0%,
   100% {
@@ -3858,7 +3981,7 @@
   height: 82px !important;
 
   left: 260px !important;
-  top: 605px !important;
+  top: 535px !important;
 
   bottom: auto !important;
 
@@ -4025,4 +4148,731 @@
   box-sizing: border-box !important;
 
   overflow: hidden !important;
+}
+.recommendation-robot {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
+  transform-origin: center bottom;
+  animation: robotLook 1.8s ease-in-out infinite;
+}
+
+@keyframes robotLook {
+  0% {
+    transform: translateX(-3px);
+  }
+
+  25% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+
+  75% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-3px);
+  }
+}
+/* =========================================================
+   RESUME INTELLIGENCE — CAREER INSIGHTS VISUAL STYLE
+   ONLY VISUALS — POSITION / SIZE UNCHANGED
+========================================================= */
+
+.hero-dashboard-stack .panel-main {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 24, 48, 0.96),
+      rgba(8, 13, 29, 0.94)
+    ) !important;
+
+  border: 1px solid rgba(105, 137, 255, 0.22) !important;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 28px rgba(91, 124, 255, 0.08) !important;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Header text */
+.hero-dashboard-stack .panel-main .panel-header {
+  color: #ffffff;
+}
+
+.hero-dashboard-stack .panel-main .panel-brand strong {
+  color: #ffffff !important;
+}
+
+.hero-dashboard-stack .panel-main .panel-brand small {
+  color: #8fa1c7 !important;
+}
+
+/* ✦ Resume Intelligence star — same cyan/blue glow */
+.hero-dashboard-stack .panel-main .resume-intelligence-star {
+  color: #ffffff !important;
+
+  text-shadow:
+    0 0 4px #ffffff,
+    0 0 9px rgba(103, 217, 255, 0.95),
+    0 0 18px rgba(91, 124, 255, 0.8),
+    0 0 28px rgba(91, 124, 255, 0.45) !important;
+}
+
+/* 98% status */
+.hero-dashboard-stack .panel-main .panel-status {
+  color: #67d9ff !important;
+}
+
+.hero-dashboard-stack .panel-main .panel-status span {
+  background: #67d9ff !important;
+
+  box-shadow:
+    0 0 7px rgba(103, 217, 255, 0.8) !important;
+}
+
+/* Resume mockup */
+.hero-dashboard-stack .panel-main .resume-preview {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.065),
+      rgba(255, 255, 255, 0.018)
+    ) !important;
+
+  border: 1px solid rgba(126, 143, 255, 0.08);
+}
+
+/* Resume heading lines */
+.hero-dashboard-stack .panel-main .resume-heading span {
+  background: rgba(145, 160, 200, 0.25) !important;
+}
+
+/* Resume text lines */
+.hero-dashboard-stack .panel-main .resume-lines i {
+  background: rgba(159, 173, 202, 0.18) !important;
+}
+
+/* EXPERIENCE */
+.hero-dashboard-stack .panel-main .resume-section-title {
+  color: #ffffff !important;
+}
+
+.hero-dashboard-stack .panel-main .resume-section-title span {
+  background: #7f95ff !important;
+
+  box-shadow:
+    0 0 7px rgba(127, 149, 255, 0.55);
+}
+
+/* Experience rows — keep their existing size */
+.hero-dashboard-stack .panel-main .resume-row span {
+  background: rgba(159, 173, 202, 0.18) !important;
+}
+/* =========================================================
+   RESUME SCORE — MATCH CAREER INSIGHTS STYLE
+   ONLY VISUALS — POSITION / SIZE UNCHANGED
+========================================================= */
+
+.hero-dashboard-stack .panel-score {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 24, 48, 0.96),
+      rgba(8, 13, 29, 0.94)
+    ) !important;
+
+  border: 1px solid rgba(105, 137, 255, 0.22) !important;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 28px rgba(91, 124, 255, 0.08) !important;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* RESUME SCORE title */
+.hero-dashboard-stack .panel-score .score-title {
+  color: #ffffff !important;
+}
+
+/* ✦ star */
+.hero-dashboard-stack .panel-score .score-star {
+  color: #ffffff !important;
+
+  text-shadow:
+    0 0 4px #ffffff,
+    0 0 9px rgba(103, 217, 255, 0.95),
+    0 0 18px rgba(91, 124, 255, 0.8),
+    0 0 28px rgba(91, 124, 255, 0.45) !important;
+}
+
+/* Status dot */
+.hero-dashboard-stack .panel-score .score-dot {
+  background: #67d9ff !important;
+
+  box-shadow:
+    0 0 7px rgba(103, 217, 255, 0.8) !important;
+}
+
+/* Score ring */
+.hero-dashboard-stack .panel-score .score-ring {
+  background:
+    conic-gradient(
+      #6d85ff 0 88%,
+      rgba(255, 255, 255, 0.07) 88% 100%
+    ) !important;
+box-shadow:
+    0 0 22px rgba(91, 124, 255, 0.18) !important;
+}
+
+/* Inner ring */
+.hero-dashboard-stack .panel-score .score-ring-inner {
+  background: #0b0f1b !important;
+}
+
+/* 88 */
+.hero-dashboard-stack .panel-score .score-ring-inner strong {
+  color: #f0f3ff !important;
+}
+
+/* /100 */
+.hero-dashboard-stack .panel-score .score-ring-inner small {
+  color: #8fa1c7 !important;
+}
+
+/* Excellent */
+.hero-dashboard-stack .panel-score .score-info strong {
+  color: #ffffff !important;
+}
+
+/* +14 this week */
+.hero-dashboard-stack .panel-score .score-info small {
+  color: #67d9ff !important;
+}
+
+/* Bottom progress */
+.hero-dashboard-stack .panel-score .score-progress {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.hero-dashboard-stack .panel-score .score-progress span {
+  background:
+    linear-gradient(
+      90deg,
+      #6278ff,
+      #67d9ff
+    ) !important;
+
+  box-shadow:
+    0 0 10px rgba(91, 124, 255, 0.35) !important;
+}
+/* =========================================================
+   AI MOCK INTERVIEW — MATCH OTHER AI PANELS
+   ONLY VISUALS — POSITION / SIZE UNCHANGED
+========================================================= */
+
+.hero-dashboard-stack .panel-interview {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 24, 48, 0.96),
+      rgba(8, 13, 29, 0.94)
+    ) !important;
+
+  border: 1px solid rgba(105, 137, 255, 0.22) !important;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 28px rgba(91, 124, 255, 0.08) !important;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Interview icon */
+.hero-dashboard-stack .panel-interview .interview-icon {
+  color: #ffffff !important;
+
+  background:
+    rgba(103, 217, 255, 0.08) !important;
+
+  border: 1px solid rgba(103, 217, 255, 0.18) !important;
+
+  box-shadow:
+    0 0 16px rgba(91, 124, 255, 0.12);
+}
+
+/* Main title */
+.hero-dashboard-stack .panel-interview .interview-content strong {
+  color: #ffffff !important;
+}
+
+/* Subtitle */
+.hero-dashboard-stack .panel-interview .interview-content small {
+  color: #8fa1c7 !important;
+}
+
+/* Microphone / action indicator */
+.hero-dashboard-stack .panel-interview .interview-mic {
+  color: #67d9ff !important;
+
+  background:
+    rgba(103, 217, 255, 0.08) !important;
+
+  border: 1px solid rgba(103, 217, 255, 0.16) !important;
+
+  box-shadow:
+    0 0 14px rgba(103, 217, 255, 0.12);
+}
+/* =========================================================
+   AI RECOMMENDATION — FLOATING STAR
+========================================================= */
+.hero-dashboard-stack .panel-recommendation .recommendation-icon {
+  position: absolute;
+
+  left: auto;
+  right: 145px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: auto;
+  height: auto;
+
+  display: block;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  color: #ffffff !important;
+  font-size: 17px;
+  line-height: 1;
+
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.9),
+    0 0 9px rgba(103, 217, 255, 0.8),
+    0 0 18px rgba(91, 124, 255, 0.7);
+
+  animation: recommendationStarShine 3.5s ease-in-out infinite;
+}
+
+/* Shine happens once in every interval */
+@keyframes recommendationStarShine {
+
+  0%,
+  72%,
+  100% {
+    opacity: 0.72;
+
+    filter: brightness(1);
+
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.8),
+      0 0 9px rgba(103, 217, 255, 0.65),
+      0 0 16px rgba(91, 124, 255, 0.55);
+  }
+
+  78% {
+    opacity: 1;
+
+    filter: brightness(1.8);
+
+    text-shadow:
+      0 0 5px #ffffff,
+      0 0 12px rgba(103, 217, 255, 1),
+      0 0 24px rgba(91, 124, 255, 0.95),
+      0 0 38px rgba(91, 124, 255, 0.55);
+  }
+
+  84% {
+    opacity: 0.8;
+
+    filter: brightness(1.15);
+  }
+}
+/* AI Recommendation subtitle — directly below title */
+.panel-recommendation .recommendation-content {
+  position: absolute !important;
+
+  left: 23px !important;
+  top: 42px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  width: auto !important;
+}
+.panel-recommendation .recommendation-title-row {
+  position: absolute !important;
+
+  left: 23px !important;
+  top: 18px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.panel-recommendation .recommendation-arrow {
+  position: absolute !important;
+  right: 18px !important;
+  left: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+/* =========================================================
+   AI MOCK INTERVIEW — PREMIUM AI PANEL
+========================================================= */
+
+.hero-dashboard-stack .panel-interview {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 24, 48, 0.96),
+      rgba(8, 13, 29, 0.94)
+    ) !important;
+
+  border: 1px solid rgba(105, 137, 255, 0.22) !important;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 28px rgba(91, 124, 255, 0.08) !important;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* Title row */
+.panel-interview .interview-title-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+
+/* Floating star */
+.panel-interview .interview-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff !important;
+  font-size: 14px;
+  line-height: 1;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  text-shadow:
+    0 0 3px rgba(255, 255, 255, 0.9),
+    0 0 8px rgba(103, 217, 255, 0.7),
+    0 0 16px rgba(91, 124, 255, 0.6);
+
+  animation: interviewStarShine 4s ease-in-out infinite;
+}
+
+
+/* Title */
+.panel-interview .interview-content strong {
+  color: #ffffff !important;
+}
+
+
+/* Subtitle */
+.panel-interview .interview-content small {
+  color: #8fa1c7 !important;
+}
+
+
+/* Mic stays as the right-side action */
+.panel-interview .interview-mic {
+  color: #67d9ff !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================================
+   STAR — SAME STYLE / SMOOTH SHINE
+========================================================= */
+
+@keyframes interviewStarShine {
+
+  0%,
+  65%,
+  100% {
+    transform: scale(1);
+    opacity: 0.78;
+    filter: brightness(1);
+
+    text-shadow:
+      0 0 3px rgba(255, 255, 255, 0.8),
+      0 0 7px rgba(103, 217, 255, 0.45);
+  }
+
+  72% {
+    transform: scale(1.18);
+    opacity: 0.95;
+    filter: brightness(1.35);
+
+    text-shadow:
+      0 0 4px #ffffff,
+      0 0 9px rgba(255, 255, 255, 0.95),
+      0 0 16px rgba(103, 217, 255, 0.8),
+      0 0 24px rgba(91, 124, 255, 0.6);
+  }
+
+  78% {
+    transform: scale(1.5);
+    opacity: 1;
+    filter: brightness(1.7);
+
+    text-shadow:
+      0 0 5px #ffffff,
+      0 0 11px #ffffff,
+      0 0 20px rgba(103, 217, 255, 1),
+      0 0 32px rgba(91, 124, 255, 0.9);
+  }
+
+  86% {
+    transform: scale(1.15);
+    opacity: 0.9;
+    filter: brightness(1.2);
+  }
+
+  94% {
+    transform: scale(1);
+    opacity: 0.78;
+    filter: brightness(1);
+  }
+}
+.panel-interview .interview-content strong {
+  font-size: 15px !important;
+  color: #ffffff !important;
+}
+/* =========================================================
+   RESUME SCORE — ACTUALLY DYNAMIC RING
+========================================================= */
+
+.hero-dashboard-stack .panel-score .score-ring {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 50% !important;
+
+  /* remove old fixed ring */
+  background: transparent !important;
+}
+
+
+/* Dynamic progress ring */
+.hero-dashboard-stack .panel-score .score-ring-progress {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  border-radius: 50% !important;
+
+  z-index: 0 !important;
+
+  transition: background 0.08s linear;
+}
+
+
+/* Dark center */
+.hero-dashboard-stack .panel-score .score-ring-inner {
+  position: absolute !important;
+
+  inset: 5px !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  border-radius: 50% !important;
+
+  background: #0b1020 !important;
+
+  z-index: 2 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* =========================================================
+   RESUME INTELLIGENCE — ANIMATED RESUME LINES
+========================================================= */
+
+.panel-main .resume-lines i {
+  display: block;
+  transform-origin: left center;
+  animation: resumeLineMove 2.4s ease-in-out infinite;
+}
+
+/* Different timing so they don't move identically */
+.panel-main .resume-lines i:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.panel-main .resume-lines i:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.panel-main .resume-lines i:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.panel-main .resume-lines i:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+.panel-main .resume-lines i:nth-child(5) {
+  animation-delay: 0.48s;
+}
+
+.panel-main .resume-lines i:nth-child(6) {
+  animation-delay: 0.60s;
+}
+
+
+@keyframes resumeLineMove {
+
+  0%,
+  100% {
+    transform: scaleX(0.72);
+  }
+
+  50% {
+    transform: scaleX(1);
+  }
+}
+/* =========================================================
+   RESUME / ATS / SKILLS — MOVING PROGRESS BARS
+========================================================= */
+
+.feature-preview .metric-progress {
+  overflow: hidden;
+}
+
+.feature-preview .metric-progress span {
+  display: block !important;
+  height: 100%;
+
+  width: var(--metric-progress) !important;
+
+  transform-origin: left center;
+  animation: metricProgressMove 2.4s ease-in-out infinite;
+
+  will-change: width;
+}
+
+/* Stagger the three bars */
+.feature-preview .preview-metric:nth-child(1)
+.metric-progress span {
+  animation-delay: 0s;
+}
+
+.feature-preview .preview-metric:nth-child(2)
+.metric-progress span {
+  animation-delay: 0.2s;
+}
+
+.feature-preview .preview-metric:nth-child(3)
+.metric-progress span {
+  animation-delay: 0.4s;
+}
+
+@keyframes metricProgressMove {
+
+  0% {
+    width: 35% !important;
+  }
+
+  50% {
+    width: 100% !important;
+  }
+
+  100% {
+    width: 35% !important;
+  }
+}
+/* =========================================
+   METRIC BARS — CONTINUOUS MOVEMENT
+========================================= */
+
+.preview-metrics .preview-metric .metric-progress {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.preview-metrics .preview-metric .metric-progress span {
+  display: block !important;
+  position: absolute !important;
+
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+
+  width: 100% !important;
+
+  transform: scaleX(0.35);
+  transform-origin: left center;
+
+  animation: metricBarPulse 5s ease-in-out infinite !important;
+
+  will-change: transform;
+}
+
+
+/* Each bar moves slightly after the previous one */
+.preview-metrics .preview-metric:nth-child(1)
+.metric-progress span {
+  animation-delay: 0s !important;
+}
+
+.preview-metrics .preview-metric:nth-child(2)
+.metric-progress span {
+  animation-delay: 0.3s !important;
+}
+
+.preview-metrics .preview-metric:nth-child(3)
+.metric-progress span {
+  animation-delay: 0.6s !important;
+}
+
+
+@keyframes metricBarPulse {
+
+  0% {
+    transform: scaleX(0.65);
+  }
+
+  50% {
+    transform: scaleX(0.90);
+  }
+
+  100% {
+    transform: scaleX(0.65);
+  }
+
 }
