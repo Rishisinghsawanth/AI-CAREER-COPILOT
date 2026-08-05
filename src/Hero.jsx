@@ -34,7 +34,43 @@ function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  /* =========================
+      ACTIVE FEATURE
+  ========================== */
   const [activeFeature, setActiveFeature] = useState("resume");
+
+  /* =========================
+      RESUME SCORE + ATS MATCH
+      75 → 90 → 75
+  ========================== */
+  const [resumeScore, setResumeScore] = useState(75);
+  const [atsMatch, setAtsMatch] = useState(82);
+
+  useEffect(() => {
+    let score = 75;
+    let direction = 1;
+
+    const interval = setInterval(() => {
+      score += direction;
+
+      if (score >= 90) {
+        score = 90;
+        direction = -1;
+      }
+
+      if (score <= 75) {
+        score = 75;
+        direction = 1;
+      }
+
+      const ats = score + 7;
+
+      setResumeScore(score);
+      setAtsMatch(ats);
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, []);
 
   /* =========================
       FEATURE DATA
@@ -45,10 +81,25 @@ function Hero() {
       title: "Resume Intelligence",
       subtitle: "Optimize your profile",
       status: "AI Analysis complete",
+
       metrics: [
-        { label: "Resume Score", value: "87/100", progress: 87 },
-        { label: "ATS Match", value: "92%", progress: 92 },
-        { label: "Skills Detected", value: "14", progress: 78 },
+        {
+          label: "Resume Score",
+          value: `${resumeScore}/100`,
+          progress: resumeScore,
+        },
+
+        {
+          label: "ATS Match",
+          value: `${atsMatch}%`,
+          progress: atsMatch,
+        },
+
+        {
+          label: "Skills Detected",
+          value: "14",
+          progress: 78,
+        },
       ],
     },
 
@@ -57,10 +108,25 @@ function Hero() {
       title: "AI Interview",
       subtitle: "Practice with precision",
       status: "AI interviewer ready",
+
       metrics: [
-        { label: "Interview Readiness", value: "78%", progress: 78 },
-        { label: "Technical", value: "84%", progress: 84 },
-        { label: "Communication", value: "76%", progress: 76 },
+        {
+          label: "Interview Readiness",
+          value: "78%",
+          progress: 78,
+        },
+
+        {
+          label: "Technical",
+          value: "84%",
+          progress: 84,
+        },
+
+        {
+          label: "Communication",
+          value: "76%",
+          progress: 76,
+        },
       ],
     },
 
@@ -69,35 +135,30 @@ function Hero() {
       title: "Career Matching",
       subtitle: "Find your best fit",
       status: "Skills aligned",
+
       metrics: [
-        { label: "Matched Roles", value: "12", progress: 82 },
-        { label: "Match Accuracy", value: "91%", progress: 91 },
-        { label: "Top Match", value: "Software Engineer", progress: 88 },
+        {
+          label: "Matched Roles",
+          value: "12",
+          progress: 82,
+        },
+
+        {
+          label: "Match Accuracy",
+          value: "91%",
+          progress: 91,
+        },
+
+        {
+          label: "Top Match",
+          value: "Software Engineer",
+          progress: 88,
+        },
       ],
     },
   };
 
   const active = featureData[activeFeature];
-
-  /* =========================
-      RESUME SCORE
-      75 → 90 → 75
-  ========================== */
-  const [resumeScore, setResumeScore] = useState(75);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setResumeScore((current) => {
-        if (current >= 90) {
-          return 75;
-        }
-
-        return current + 1;
-      });
-    }, 300);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section className="hero" id="hero">
@@ -106,6 +167,7 @@ function Hero() {
           BACKGROUND
       ========================== */}
       <div className="hero-background" aria-hidden="true">
+
         <div className="hero-grid"></div>
 
         <div className="hero-orb hero-orb-one"></div>
@@ -115,13 +177,16 @@ function Hero() {
         <div className="hero-atmosphere hero-atmosphere-two"></div>
 
         <div className="space-stars">
+
           {Array.from({ length: 55 }, (_, index) => (
             <span
               key={index}
               className={`star star-${index + 1}`}
             ></span>
           ))}
+
         </div>
+
       </div>
 
       {/* =========================
@@ -137,27 +202,46 @@ function Hero() {
           <div className="hero-copy">
 
             <div className="hero-badge">
+
               <span className="status-dot"></span>
+
               AI-powered placement intelligence
+
             </div>
 
             <h1 className="hero-title">
+
               Turn your preparation
+
               <br />
-              <span>into professional readiness</span>
+
+              <span>
+                into professional readiness
+              </span>
+
             </h1>
 
             <p className="hero-description">
+
               Your AI-powered command center for{" "}
-              <span>resumes</span>, <span>interviews</span>,{" "}
+
+              <span>resumes</span>,{" "}
+              <span>interviews</span>,{" "}
               <span>skills</span>,
+
               <br className="hero-description-break" />
+
               and the roles that move your career forward
+
             </p>
 
             <div className="hero-buttons">
 
-              <a href="#login" className="primary-btn">
+              <a
+                href="#login"
+                className="primary-btn"
+              >
+
                 <span className="primary-btn-label">
                   Start preparing
                 </span>
@@ -165,13 +249,18 @@ function Hero() {
                 <span className="primary-btn-arrow">
                   →
                 </span>
+
               </a>
 
-              <a href="#features" className="secondary-btn">
+              <a
+                href="#features"
+                className="secondary-btn"
+              >
                 Explore platform
               </a>
 
             </div>
+
           </div>
 
           {/* =========================
@@ -185,19 +274,34 @@ function Hero() {
             <button
               type="button"
               className={`proof-item ${
-                activeFeature === "resume" ? "active" : ""
+                activeFeature === "resume"
+                  ? "active"
+                  : ""
               }`}
-              onClick={() => setActiveFeature("resume")}
-              aria-pressed={activeFeature === "resume"}
+              onClick={() =>
+                setActiveFeature("resume")
+              }
+              aria-pressed={
+                activeFeature === "resume"
+              }
             >
+
               <span className="proof-number">
                 {featureData.resume.number}
               </span>
 
               <div className="proof-copy">
-                <strong>Resume Intelligence</strong>
-                <small>Optimize your profile</small>
+
+                <strong>
+                  Resume Intelligence
+                </strong>
+
+                <small>
+                  Optimize your profile
+                </small>
+
               </div>
+
             </button>
 
             <div
@@ -208,19 +312,34 @@ function Hero() {
             <button
               type="button"
               className={`proof-item ${
-                activeFeature === "interview" ? "active" : ""
+                activeFeature === "interview"
+                  ? "active"
+                  : ""
               }`}
-              onClick={() => setActiveFeature("interview")}
-              aria-pressed={activeFeature === "interview"}
+              onClick={() =>
+                setActiveFeature("interview")
+              }
+              aria-pressed={
+                activeFeature === "interview"
+              }
             >
+
               <span className="proof-number">
                 {featureData.interview.number}
               </span>
 
               <div className="proof-copy">
-                <strong>AI Interview</strong>
-                <small>Practice with precision</small>
+
+                <strong>
+                  AI Interview
+                </strong>
+
+                <small>
+                  Practice with precision
+                </small>
+
               </div>
+
             </button>
 
             <div
@@ -231,19 +350,34 @@ function Hero() {
             <button
               type="button"
               className={`proof-item ${
-                activeFeature === "career" ? "active" : ""
+                activeFeature === "career"
+                  ? "active"
+                  : ""
               }`}
-              onClick={() => setActiveFeature("career")}
-              aria-pressed={activeFeature === "career"}
+              onClick={() =>
+                setActiveFeature("career")
+              }
+              aria-pressed={
+                activeFeature === "career"
+              }
             >
+
               <span className="proof-number">
                 {featureData.career.number}
               </span>
 
               <div className="proof-copy">
-                <strong>Career Matching</strong>
-                <small>Find your best fit</small>
+
+                <strong>
+                  Career Matching
+                </strong>
+
+                <small>
+                  Find your best fit
+                </small>
+
               </div>
+
             </button>
 
           </div>
@@ -288,6 +422,7 @@ function Hero() {
                   </span>
 
                   <div>
+
                     <strong>
                       {active.title}
                     </strong>
@@ -295,43 +430,57 @@ function Hero() {
                     <small>
                       {active.subtitle}
                     </small>
+
                   </div>
 
                 </div>
 
                 <span className="preview-status">
+
                   <i></i>
+
                   LIVE
+
                 </span>
 
               </div>
 
               <div className="preview-metrics">
 
-                {active.metrics.map((metric, index) => (
-                  <div
-                    className="preview-metric"
-                    key={`${activeFeature}-${index}`}
-                  >
+                {active.metrics.map(
+                  (metric, index) => (
 
-                    <div className="metric-top">
+                    <div
+                      className="preview-metric"
+                      key={`${activeFeature}-${index}`}
+                    >
 
-                      <span>
-                        {metric.label}
-                      </span>
+                      <div className="metric-top">
 
-                      <strong>
-                        {metric.value}
-                      </strong>
+                        <span>
+                          {metric.label}
+                        </span>
+
+                        <strong>
+                          {metric.value}
+                        </strong>
+
+                      </div>
+
+                      <div className="metric-progress">
+
+                        <span
+                          style={{
+                            width: `${metric.progress}%`,
+                          }}
+                        ></span>
+
+                      </div>
 
                     </div>
 
-                    <div className="metric-progress">
-                      <span></span>
-                    </div>
-
-                  </div>
-                ))}
+                  )
+                )}
 
               </div>
 
@@ -350,7 +499,9 @@ function Hero() {
               </div>
 
             </div>
+
           </div>
+
         </div>
 
         {/* =========================
@@ -384,11 +535,20 @@ function Hero() {
               </div>
 
               <div className="panel-title">
-                Top <strong>{topPercentile}%</strong>
+
+                Top{" "}
+
+                <strong>
+                  {topPercentile}%
+                </strong>
+
               </div>
 
               <div className="panel-subtitle">
-                Your profile is outperforming similar candidates
+
+                Your profile is outperforming similar
+                candidates
+
               </div>
 
               <div className="mini-chart">
@@ -404,10 +564,12 @@ function Hero() {
               </div>
 
               <div className="chart-labels">
+
                 <span>Skills</span>
                 <span>Projects</span>
                 <span>ATS</span>
                 <span>Interview</span>
+
               </div>
 
             </div>
@@ -440,44 +602,58 @@ function Hero() {
                 </div>
 
                 <div className="panel-status">
-  <span></span>
-  <AnimatedResumePercent />
-</div>
+
+                  <span></span>
+
+                  <AnimatedResumePercent />
+
+                </div>
 
               </div>
 
               <div className="resume-preview">
 
                 <div className="resume-heading">
+
                   <span></span>
                   <span></span>
                   <span></span>
+
                 </div>
 
                 <div className="resume-lines">
+
                   <i></i>
                   <i></i>
                   <i></i>
                   <i></i>
                   <i></i>
                   <i></i>
+
                 </div>
 
                 <div className="resume-section">
 
                   <div className="resume-section-title">
+
                     <span></span>
+
                     EXPERIENCE
+
                   </div>
 
                   <div className="resume-row">
+
                     <span></span>
                     <span></span>
+
                   </div>
 
                   <div className="resume-row">
+
                     <span></span>
                     <span></span>
+
                   </div>
 
                 </div>
@@ -510,7 +686,8 @@ function Hero() {
               <div className="recommendation-content">
 
                 <small>
-                  Strengthen your project impact statements
+                  Strengthen your project impact
+                  statements
                 </small>
 
               </div>
@@ -551,7 +728,9 @@ function Hero() {
                     style={{
                       background: `conic-gradient(
                         #6d85ff ${resumeScore * 3.6}deg,
-                        rgba(255, 255, 255, 0.07) ${resumeScore * 3.6}deg
+                        rgba(255, 255, 255, 0.07) ${
+                          resumeScore * 3.6
+                        }deg
                       )`,
                     }}
                   ></div>
@@ -585,7 +764,13 @@ function Hero() {
               </div>
 
               <div className="score-progress">
-                <span></span>
+
+                <span
+                  style={{
+                    width: `${resumeScore}%`,
+                  }}
+                ></span>
+
               </div>
 
             </div>
@@ -640,7 +825,9 @@ function Hero() {
             ></span>
 
           </div>
+
         </div>
+
       </div>
 
       {/* =========================
@@ -650,6 +837,7 @@ function Hero() {
         className="hero-scroll"
         aria-hidden="true"
       >
+
         <span>
           SCROLL TO EXPLORE
         </span>
@@ -657,19 +845,27 @@ function Hero() {
         <b>
           ↓
         </b>
+
       </div>
 
     </section>
   );
 }
+
+/* =========================
+    ANIMATED RESUME PERCENT
+========================= */
 function AnimatedResumePercent() {
+
   const [value, setValue] = useState(75);
 
   useEffect(() => {
+
     let current = 75;
     let direction = 1;
 
     const interval = setInterval(() => {
+
       current += direction;
 
       if (current >= 90) {
@@ -683,9 +879,11 @@ function AnimatedResumePercent() {
       }
 
       setValue(current);
+
     }, 300);
 
     return () => clearInterval(interval);
+
   }, []);
 
   return <>{value}%</>;
