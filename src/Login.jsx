@@ -26,10 +26,9 @@ function Login() {
   return (
     <main className="login-page">
 
-      {/* =====================================================
+      {/* =========================
           SPACE BACKGROUND
-      ===================================================== */}
-
+      ========================== */}
       <div className="login-stars" aria-hidden="true">
         {Array.from({ length: 32 }).map((_, index) => (
           <span
@@ -42,16 +41,14 @@ function Login() {
       <div className="login-glow login-glow-one" />
       <div className="login-glow login-glow-two" />
 
-      {/* =====================================================
+      {/* =========================
           MAIN AUTH LAYOUT
-      ===================================================== */}
-
+      ========================== */}
       <section className="login-layout">
 
-        {/* ===================================================
-            LEFT — SPACE / ROCKET EXPERIENCE
-        =================================================== */}
-
+        {/* =========================
+            LEFT — SPACE / ROCKET
+        ========================== */}
         <div className="login-showcase">
 
           <div className="showcase-orbit orbit-one" />
@@ -96,7 +93,6 @@ function Login() {
 
             </div>
 
-            {/* Launch trajectory */}
             <div className="rocket-trail">
               <span />
               <span />
@@ -118,7 +114,7 @@ function Login() {
               <span>Ready for launch.</span>
             </h1>
 
-            <p>
+            <p className="showcase-description">
               Sign in to continue building your career with
               intelligent resume analysis, interview practice
               and placement preparation.
@@ -126,134 +122,38 @@ function Login() {
 
           </div>
 
-          {/* Stats */}
+          {/* =========================
+              CAREER INSIGHTS
+          ========================== */}
           <div className="showcase-stats">
 
             <div className="showcase-stat">
-              <strong>AI</strong>
-              <span>Career Intelligence</span>
+              <strong>87%</strong>
+              <span>Resume Match Score</span>
             </div>
 
             <div className="stat-divider" />
 
             <div className="showcase-stat">
-              <strong>24/7</strong>
-              <span>Smart Preparation</span>
+              <strong>12</strong>
+              <span>Matched Opportunities</span>
             </div>
 
             <div className="stat-divider" />
 
             <div className="showcase-stat">
-              <strong>∞</strong>
-              <span>Practice Sessions</span>
+              <strong>92%</strong>
+              <span>Interview Readiness</span>
             </div>
 
           </div>
 
         </div>
 
-        {/* ===================================================
+        {/* =========================
             RIGHT — LOGIN
-        =================================================== */}
-
+        ========================== */}
         <div className="login-side">
-
-          {/* Career visual */}
-          <div className="career-visual">
-
-            <div className="career-visual-glow" />
-
-            <div
-              className="career-star"
-              aria-hidden="true"
-            >
-              ✦
-            </div>
-
-            {/* AI status */}
-            <div className="career-card career-card-top">
-
-              <span className="career-dot" />
-
-              <div>
-                <b>AI Career Analysis</b>
-                <small>Profile optimized</small>
-              </div>
-
-            </div>
-
-            {/* Resume */}
-            <div className="career-card career-card-left">
-
-              <div className="career-card-icon">
-                ↗
-              </div>
-
-              <div>
-                <small>RESUME SCORE</small>
-
-                <b>
-                  87<span>/100</span>
-                </b>
-              </div>
-
-            </div>
-
-            {/* Interview */}
-            <div className="career-card career-card-right">
-
-              <div className="career-card-icon purple">
-                ◆
-              </div>
-
-              <div>
-                <small>INTERVIEW READINESS</small>
-                <b>92%</b>
-              </div>
-
-            </div>
-
-            {/* Progress */}
-            <div className="career-card career-card-bottom">
-
-              <div className="career-progress">
-                <span />
-              </div>
-
-              <div>
-                <b>Career Progress</b>
-
-                <small>
-                  You're on the right trajectory
-                </small>
-              </div>
-
-            </div>
-
-            {/* Career message */}
-            <div className="career-copy">
-
-              <span>
-                AI-POWERED CAREER INTELLIGENCE
-              </span>
-
-              <h2>
-                Your next
-                <strong> opportunity starts here.</strong>
-              </h2>
-
-              <p>
-                Analyze. Prepare. Practice. Get placement ready
-                with one intelligent career platform.
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* =================================================
-              LOGIN CARD
-          ================================================= */}
 
           <div className="login-card">
 
@@ -299,7 +199,10 @@ function Login() {
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
-                      if (error) setError("");
+
+                      if (error) {
+                        setError("");
+                      }
                     }}
                     autoComplete="email"
                   />
@@ -348,7 +251,10 @@ function Login() {
                     value={password}
                     onChange={(e) => {
                       setPassword(e.target.value);
-                      if (error) setError("");
+
+                      if (error) {
+                        setError("");
+                      }
                     }}
                     autoComplete="current-password"
                   />

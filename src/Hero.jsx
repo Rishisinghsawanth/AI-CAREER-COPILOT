@@ -4,6 +4,8 @@ import "./Hero.css";
 function Hero() {
   /* =========================
       CAREER INSIGHTS NUMBER
+      1 → 10 → 1
+      SLOW ANIMATION
   ========================== */
   const [topPercentile, setTopPercentile] = useState(1);
 
@@ -29,7 +31,7 @@ function Hero() {
       }
 
       setTopPercentile(value);
-    }, 120);
+    }, 450);
 
     return () => clearInterval(interval);
   }, []);
@@ -63,13 +65,216 @@ function Hero() {
         direction = 1;
       }
 
-      const ats = score + 7;
-
       setResumeScore(score);
-      setAtsMatch(ats);
+      setAtsMatch(score + 7);
     }, 300);
 
     return () => clearInterval(interval);
+  }, []);
+
+  /* =========================
+      SKILLS DETECTED
+      8 → 15 → 8
+  ========================== */
+  const [skillsDetected, setSkillsDetected] = useState(8);
+
+  useEffect(() => {
+    let value = 8;
+    let increasing = true;
+
+    const interval = setInterval(() => {
+      if (increasing) {
+        value++;
+
+        if (value >= 15) {
+          value = 15;
+          increasing = false;
+        }
+      } else {
+        value--;
+
+        if (value <= 8) {
+          value = 8;
+          increasing = true;
+        }
+      }
+
+      setSkillsDetected(value);
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  /* =========================
+      INTERVIEW VALUES
+      ALL VALUES ANIMATE
+  ========================== */
+  const [interviewReadiness, setInterviewReadiness] = useState(72);
+  const [technicalScore, setTechnicalScore] = useState(80);
+  const [communicationScore, setCommunicationScore] = useState(74);
+
+  useEffect(() => {
+    let readiness = 72;
+    let technical = 80;
+    let communication = 74;
+
+    let readinessDirection = 1;
+    let technicalDirection = 1;
+    let communicationDirection = 1;
+
+    const interval = setInterval(() => {
+      readiness += readinessDirection;
+      technical += technicalDirection;
+      communication += communicationDirection;
+
+      if (readiness >= 88) {
+        readiness = 88;
+        readinessDirection = -1;
+      }
+
+      if (readiness <= 72) {
+        readiness = 72;
+        readinessDirection = 1;
+      }
+
+      if (technical >= 94) {
+        technical = 94;
+        technicalDirection = -1;
+      }
+
+      if (technical <= 80) {
+        technical = 80;
+        technicalDirection = 1;
+      }
+
+      if (communication >= 90) {
+        communication = 90;
+        communicationDirection = -1;
+      }
+
+      if (communication <= 74) {
+        communication = 74;
+        communicationDirection = 1;
+      }
+
+      setInterviewReadiness(readiness);
+      setTechnicalScore(technical);
+      setCommunicationScore(communication);
+    }, 350);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  /* =========================
+      CAREER MATCHING VALUES
+      MATCHED ROLES: 3 → 10
+      MATCH ACCURACY: 75 → 92
+  ========================== */
+  const [matchedRoles, setMatchedRoles] = useState(3);
+  const [matchAccuracy, setMatchAccuracy] = useState(75);
+
+  useEffect(() => {
+    let roles = 3;
+    let accuracy = 75;
+
+    let rolesDirection = 1;
+    let accuracyDirection = 1;
+
+    const interval = setInterval(() => {
+      roles += rolesDirection;
+      accuracy += accuracyDirection;
+
+      if (roles >= 10) {
+        roles = 10;
+        rolesDirection = -1;
+      }
+
+      if (roles <= 3) {
+        roles = 3;
+        rolesDirection = 1;
+      }
+
+      if (accuracy >= 92) {
+        accuracy = 92;
+        accuracyDirection = -1;
+      }
+
+      if (accuracy <= 75) {
+        accuracy = 75;
+        accuracyDirection = 1;
+      }
+
+      setMatchedRoles(roles);
+      setMatchAccuracy(accuracy);
+    }, 400);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  /* =========================
+      TOP MATCH ROLES
+  ========================== */
+  const topMatches = [
+    "Software Engineer",
+    "Full Stack Developer",
+    "Frontend Engineer",
+    "AI Engineer",
+    "Backend Developer",
+    "ML Engineer",
+  ];
+
+  const [topMatchIndex, setTopMatchIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTopMatchIndex((current) =>
+        (current + 1) % topMatches.length
+      );
+    }, 2200);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  /* =========================
+      AI ACTIVITY SEQUENCE
+      1. Resume optimized
+      2. Skills mapped
+      3. Roles matched
+      4. All white
+      5. Hold 3 seconds
+  ========================== */
+  const [activityStage, setActivityStage] = useState(0);
+
+  useEffect(() => {
+    let timeoutId;
+
+    const runSequence = () => {
+      setActivityStage(1);
+
+      timeoutId = setTimeout(() => {
+        setActivityStage(2);
+
+        timeoutId = setTimeout(() => {
+          setActivityStage(3);
+
+          timeoutId = setTimeout(() => {
+            setActivityStage(4);
+
+            timeoutId = setTimeout(() => {
+              setActivityStage(0);
+
+              timeoutId = setTimeout(() => {
+                runSequence();
+              }, 800);
+            }, 3000);
+          }, 700);
+        }, 700);
+      }, 700);
+    };
+
+    runSequence();
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   /* =========================
@@ -87,18 +292,19 @@ function Hero() {
           label: "Resume Score",
           value: `${resumeScore}/100`,
           progress: resumeScore,
+          colorClass: "metric-green",
         },
-
         {
           label: "ATS Match",
           value: `${atsMatch}%`,
           progress: atsMatch,
+          colorClass: "metric-blue",
         },
-
         {
           label: "Skills Detected",
-          value: "14",
-          progress: 78,
+          value: `${skillsDetected}`,
+          progress: (skillsDetected / 15) * 100,
+          colorClass: "metric-purple",
         },
       ],
     },
@@ -112,20 +318,21 @@ function Hero() {
       metrics: [
         {
           label: "Interview Readiness",
-          value: "78%",
-          progress: 78,
+          value: `${interviewReadiness}%`,
+          progress: interviewReadiness,
+          colorClass: "metric-green",
         },
-
         {
           label: "Technical",
-          value: "84%",
-          progress: 84,
+          value: `${technicalScore}%`,
+          progress: technicalScore,
+          colorClass: "metric-blue",
         },
-
         {
           label: "Communication",
-          value: "76%",
-          progress: 76,
+          value: `${communicationScore}%`,
+          progress: communicationScore,
+          colorClass: "metric-purple",
         },
       ],
     },
@@ -139,20 +346,21 @@ function Hero() {
       metrics: [
         {
           label: "Matched Roles",
-          value: "12",
-          progress: 82,
+          value: `${matchedRoles}`,
+          progress: (matchedRoles / 10) * 100,
+          colorClass: "metric-green",
         },
-
         {
           label: "Match Accuracy",
-          value: "91%",
-          progress: 91,
+          value: `${matchAccuracy}%`,
+          progress: matchAccuracy,
+          colorClass: "metric-blue",
         },
-
         {
           label: "Top Match",
-          value: "Software Engineer",
+          value: topMatches[topMatchIndex],
           progress: 88,
+          colorClass: "metric-purple",
         },
       ],
     },
@@ -177,14 +385,12 @@ function Hero() {
         <div className="hero-atmosphere hero-atmosphere-two"></div>
 
         <div className="space-stars">
-
           {Array.from({ length: 55 }, (_, index) => (
             <span
               key={index}
               className={`star star-${index + 1}`}
             ></span>
           ))}
-
         </div>
 
       </div>
@@ -195,44 +401,32 @@ function Hero() {
       <div className="hero-container">
 
         {/* =========================
-            LEFT / PRIMARY CONTENT
+            LEFT CONTENT
         ========================== */}
         <div className="hero-content">
 
           <div className="hero-copy">
 
             <div className="hero-badge">
-
               <span className="status-dot"></span>
-
               AI-powered placement intelligence
-
             </div>
 
             <h1 className="hero-title">
-
               Turn your preparation
-
               <br />
-
               <span>
                 into professional readiness
               </span>
-
             </h1>
 
             <p className="hero-description">
-
               Your AI-powered command center for{" "}
-
               <span>resumes</span>,{" "}
               <span>interviews</span>,{" "}
               <span>skills</span>,
-
               <br className="hero-description-break" />
-
               and the roles that move your career forward
-
             </p>
 
             <div className="hero-buttons">
@@ -241,7 +435,6 @@ function Hero() {
                 href="#login"
                 className="primary-btn"
               >
-
                 <span className="primary-btn-label">
                   Start preparing
                 </span>
@@ -249,7 +442,6 @@ function Hero() {
                 <span className="primary-btn-arrow">
                   →
                 </span>
-
               </a>
 
               <a
@@ -278,12 +470,8 @@ function Hero() {
                   ? "active"
                   : ""
               }`}
-              onClick={() =>
-                setActiveFeature("resume")
-              }
-              aria-pressed={
-                activeFeature === "resume"
-              }
+              onClick={() => setActiveFeature("resume")}
+              aria-pressed={activeFeature === "resume"}
             >
 
               <span className="proof-number">
@@ -291,7 +479,6 @@ function Hero() {
               </span>
 
               <div className="proof-copy">
-
                 <strong>
                   Resume Intelligence
                 </strong>
@@ -299,7 +486,6 @@ function Hero() {
                 <small>
                   Optimize your profile
                 </small>
-
               </div>
 
             </button>
@@ -316,12 +502,8 @@ function Hero() {
                   ? "active"
                   : ""
               }`}
-              onClick={() =>
-                setActiveFeature("interview")
-              }
-              aria-pressed={
-                activeFeature === "interview"
-              }
+              onClick={() => setActiveFeature("interview")}
+              aria-pressed={activeFeature === "interview"}
             >
 
               <span className="proof-number">
@@ -329,7 +511,6 @@ function Hero() {
               </span>
 
               <div className="proof-copy">
-
                 <strong>
                   AI Interview
                 </strong>
@@ -337,7 +518,6 @@ function Hero() {
                 <small>
                   Practice with precision
                 </small>
-
               </div>
 
             </button>
@@ -354,12 +534,8 @@ function Hero() {
                   ? "active"
                   : ""
               }`}
-              onClick={() =>
-                setActiveFeature("career")
-              }
-              aria-pressed={
-                activeFeature === "career"
-              }
+              onClick={() => setActiveFeature("career")}
+              aria-pressed={activeFeature === "career"}
             >
 
               <span className="proof-number">
@@ -367,7 +543,6 @@ function Hero() {
               </span>
 
               <div className="proof-copy">
-
                 <strong>
                   Career Matching
                 </strong>
@@ -375,7 +550,6 @@ function Hero() {
                 <small>
                   Find your best fit
                 </small>
-
               </div>
 
             </button>
@@ -397,15 +571,33 @@ function Hero() {
 
               <span className="ai-activity-divider"></span>
 
-              <span className="activity-check">
+              <span
+                className={`activity-check ${
+                  activityStage >= 1
+                    ? "activity-active"
+                    : ""
+                }`}
+              >
                 ✓ Resume optimized
               </span>
 
-              <span className="activity-check">
+              <span
+                className={`activity-check ${
+                  activityStage >= 2
+                    ? "activity-active"
+                    : ""
+                }`}
+              >
                 ✓ Skills mapped
               </span>
 
-              <span className="activity-check">
+              <span
+                className={`activity-check ${
+                  activityStage >= 3
+                    ? "activity-active"
+                    : ""
+                }`}
+              >
                 ✓ Roles matched
               </span>
 
@@ -422,7 +614,6 @@ function Hero() {
                   </span>
 
                   <div>
-
                     <strong>
                       {active.title}
                     </strong>
@@ -430,57 +621,49 @@ function Hero() {
                     <small>
                       {active.subtitle}
                     </small>
-
                   </div>
 
                 </div>
 
                 <span className="preview-status">
-
                   <i></i>
-
                   LIVE
-
                 </span>
 
               </div>
 
               <div className="preview-metrics">
 
-                {active.metrics.map(
-                  (metric, index) => (
+                {active.metrics.map((metric, index) => (
+                  <div
+                    className="preview-metric"
+                    key={`${activeFeature}-${index}`}
+                  >
 
-                    <div
-                      className="preview-metric"
-                      key={`${activeFeature}-${index}`}
-                    >
+                    <div className="metric-top">
 
-                      <div className="metric-top">
+                      <span>
+                        {metric.label}
+                      </span>
 
-                        <span>
-                          {metric.label}
-                        </span>
-
-                        <strong>
-                          {metric.value}
-                        </strong>
-
-                      </div>
-
-                      <div className="metric-progress">
-
-                        <span
-                          style={{
-                            width: `${metric.progress}%`,
-                          }}
-                        ></span>
-
-                      </div>
+                      <strong>
+                        {metric.value}
+                      </strong>
 
                     </div>
 
-                  )
-                )}
+                    <div
+                      className={`metric-progress metric-${index} ${metric.colorClass}`}
+                    >
+                      <span
+                        style={{
+                          width: `${metric.progress}%`,
+                        }}
+                      ></span>
+                    </div>
+
+                  </div>
+                ))}
 
               </div>
 
@@ -535,20 +718,15 @@ function Hero() {
               </div>
 
               <div className="panel-title">
-
                 Top{" "}
-
                 <strong>
                   {topPercentile}%
                 </strong>
-
               </div>
 
               <div className="panel-subtitle">
-
                 Your profile is outperforming similar
                 candidates
-
               </div>
 
               <div className="mini-chart">
@@ -564,12 +742,10 @@ function Hero() {
               </div>
 
               <div className="chart-labels">
-
                 <span>Skills</span>
                 <span>Projects</span>
                 <span>ATS</span>
                 <span>Interview</span>
-
               </div>
 
             </div>
@@ -588,7 +764,6 @@ function Hero() {
                   </span>
 
                   <div>
-
                     <strong>
                       Resume Intelligence
                     </strong>
@@ -596,7 +771,6 @@ function Hero() {
                     <small>
                       AI analysis complete
                     </small>
-
                   </div>
 
                 </div>
@@ -614,46 +788,35 @@ function Hero() {
               <div className="resume-preview">
 
                 <div className="resume-heading">
-
                   <span></span>
                   <span></span>
                   <span></span>
-
                 </div>
 
                 <div className="resume-lines">
-
                   <i></i>
                   <i></i>
                   <i></i>
                   <i></i>
                   <i></i>
                   <i></i>
-
                 </div>
 
                 <div className="resume-section">
 
                   <div className="resume-section-title">
-
                     <span></span>
-
                     EXPERIENCE
-
                   </div>
 
                   <div className="resume-row">
-
                     <span></span>
                     <span></span>
-
                   </div>
 
                   <div className="resume-row">
-
                     <span></span>
                     <span></span>
-
                   </div>
 
                 </div>
@@ -856,16 +1019,13 @@ function Hero() {
     ANIMATED RESUME PERCENT
 ========================= */
 function AnimatedResumePercent() {
-
   const [value, setValue] = useState(75);
 
   useEffect(() => {
-
     let current = 75;
     let direction = 1;
 
     const interval = setInterval(() => {
-
       current += direction;
 
       if (current >= 90) {
@@ -879,11 +1039,9 @@ function AnimatedResumePercent() {
       }
 
       setValue(current);
-
     }, 300);
 
     return () => clearInterval(interval);
-
   }, []);
 
   return <>{value}%</>;
